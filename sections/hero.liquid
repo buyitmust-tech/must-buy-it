@@ -1,0 +1,65 @@
+{%- liquid
+  assign s = section.settings
+-%}
+<section class="hero{% if s.align == 'center' %} hero--center{% endif %}" style="--hero-h: {{ s.height }}px; --hero-overlay: {{ s.overlay | divided_by: 100.0 }}; --hero-fg: {{ s.text_color }};">
+  <div class="hero__media">
+    {%- if s.image != blank -%}
+      {%- if s.image_mobile != blank -%}
+        <picture>
+          <source media="(max-width: 749px)" srcset="{{ s.image_mobile | image_url: width: 750 }} 750w, {{ s.image_mobile | image_url: width: 1100 }} 1100w" sizes="100vw">
+          {{ s.image | image_url: width: 2400 | image_tag: loading: 'eager', fetchpriority: 'high', widths: '750, 1100, 1500, 1920, 2400', sizes: '100vw', alt: s.image.alt }}
+        </picture>
+      {%- else -%}
+        {{ s.image | image_url: width: 2400 | image_tag: loading: 'eager', fetchpriority: 'high', widths: '750, 1100, 1500, 1920, 2400', sizes: '100vw', alt: s.image.alt }}
+      {%- endif -%}
+    {%- else -%}
+      {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}
+    {%- endif -%}
+  </div>
+  <div class="page-width" style="width:100%;">
+    <div class="hero__content">
+      {%- if s.badge != blank -%}<span class="hero__badge">{{ s.badge }}</span>{%- endif -%}
+      {%- if s.heading != blank -%}<h2 class="h1" style="font-size: clamp(2rem, 5.5vw, 3.75rem);">{{ s.heading }}</h2>{%- endif -%}
+      {%- if s.subheading != blank -%}<p class="hero__sub">{{ s.subheading }}</p>{%- endif -%}
+      <div class="hero__ctas">
+        {%- if s.button_label != blank -%}
+          <a href="{{ s.button_link | default: routes.all_products_collection_url }}" class="btn btn--primary btn--lg{% if s.pulse %} btn--pulse{% endif %}">{{ s.button_label }} {% render 'icon', name: 'arrow' %}</a>
+        {%- endif -%}
+        {%- if s.button2_label != blank -%}
+          <a href="{{ s.button2_link }}" class="btn btn--secondary btn--lg">{{ s.button2_label }}</a>
+        {%- endif -%}
+      </div>
+      {%- if s.proof_text != blank -%}
+        <div class="hero__proof">
+          {% render 'stars', rating: 5 %}
+          <span>{{ s.proof_text }}</span>
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "באנר ראשי (Hero)",
+  "class": "section-hero",
+  "settings": [
+    { "type": "image_picker", "id": "image", "label": "תמונה (דסקטופ)" },
+    { "type": "image_picker", "id": "image_mobile", "label": "תמונה (מובייל)", "info": "מומלץ תמונה לאורך" },
+    { "type": "text", "id": "badge", "label": "תגית מעל הכותרת", "default": "⚡ מבצע השקה — עד 50% הנחה" },
+    { "type": "text", "id": "heading", "label": "כותרת", "default": "המוצרים שחייבים שיהיו לך" },
+    { "type": "textarea", "id": "subheading", "label": "תת-כותרת", "default": "מוצרים נבחרים באיכות גבוהה, משלוח מהיר עד הבית והחזרה חינם עד 30 יום." },
+    { "type": "text", "id": "button_label", "label": "כפתור ראשי", "default": "לקנייה עכשיו" },
+    { "type": "url", "id": "button_link", "label": "קישור כפתור ראשי" },
+    { "type": "checkbox", "id": "pulse", "label": "אנימציית פעימה לכפתור", "default": true },
+    { "type": "text", "id": "button2_label", "label": "כפתור משני" },
+    { "type": "url", "id": "button2_link", "label": "קישור כפתור משני" },
+    { "type": "text", "id": "proof_text", "label": "שורת הוכחה חברתית", "default": "4.9/5 מעל 2,000 לקוחות מרוצים" },
+    { "type": "select", "id": "align", "label": "יישור", "options": [ { "value": "start", "label": "ימין" }, { "value": "center", "label": "מרכז" } ], "default": "start" },
+    { "type": "range", "id": "height", "label": "גובה", "min": 360, "max": 860, "step": 20, "unit": "px", "default": 600 },
+    { "type": "range", "id": "overlay", "label": "הכהיית תמונה", "min": 0, "max": 90, "step": 5, "unit": "%", "default": 45 },
+    { "type": "color", "id": "text_color", "label": "צבע טקסט", "default": "#ffffff" }
+  ],
+  "presets": [{ "name": "באנר ראשי (Hero)" }]
+}
+{% endschema %}

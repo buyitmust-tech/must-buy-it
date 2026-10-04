@@ -1,0 +1,54 @@
+<div class="page-width">
+  <h1 style="margin-top: 2rem;">סל הקניות</h1>
+  {%- if cart.item_count > 0 -%}
+    <form action="{{ routes.cart_url }}" method="post" class="cart-page" id="CartPageForm">
+      <div>
+        {% render 'free-shipping-bar' %}
+        {% render 'cart-line-items' %}
+        <noscript><button type="submit" name="update" class="btn btn--secondary" style="margin-top:1rem;">עדכון סל</button></noscript>
+        {%- if section.settings.show_note -%}
+          <div class="field" style="margin-top: 1.5rem;">
+            <label for="CartNote">הערה להזמנה</label>
+            <textarea id="CartNote" name="note">{{ cart.note }}</textarea>
+          </div>
+        {%- endif -%}
+      </div>
+      <aside class="cart-summary">
+        {% render 'cart-totals' %}
+        <button type="submit" name="checkout" class="btn btn--primary btn--full btn--lg">{% render 'icon', name: 'lock' %} מעבר לתשלום מאובטח</button>
+        {%- if additional_checkout_buttons -%}
+          <div style="margin-top: .75rem;">{{ content_for_additional_checkout_buttons }}</div>
+        {%- endif -%}
+        {%- if settings.cart_trust_text != blank -%}<p class="cart-trust">{{ settings.cart_trust_text }}</p>{%- endif -%}
+        <ul class="payment-icons" style="justify-content:center;margin-top:.75rem;">
+          {%- for type in shop.enabled_payment_types -%}<li>{{ type | payment_type_svg_tag }}</li>{%- endfor -%}
+        </ul>
+      </aside>
+    </form>
+    <script>
+      // On the cart page, reload after AJAX quantity changes so totals stay in sync
+      document.addEventListener('change', function (e) {
+        if (e.target.matches('#CartPageForm [data-cart-line-qty]')) setTimeout(function () { window.location.reload(); }, 500);
+      });
+      document.addEventListener('click', function (e) {
+        if (e.target.closest('#CartPageForm [data-cart-remove]')) setTimeout(function () { window.location.reload(); }, 500);
+      });
+    </script>
+  {%- else -%}
+    <div class="cart-empty">
+      {% render 'icon', name: 'cart' %}
+      <h2>הסל שלך ריק</h2>
+      <p class="muted">בואו נמצא לכם משהו מעולה</p>
+      <a href="{{ routes.all_products_collection_url }}" class="btn btn--primary">להתחיל לקנות</a>
+    </div>
+  {%- endif -%}
+</div>
+
+{% schema %}
+{
+  "name": "עמוד סל",
+  "settings": [
+    { "type": "checkbox", "id": "show_note", "label": "אפשר הערה להזמנה", "default": true }
+  ]
+}
+{% endschema %}

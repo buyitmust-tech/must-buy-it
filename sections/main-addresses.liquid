@@ -1,0 +1,38 @@
+<div class="page-width">
+  <div class="customer customer--wide">
+    <p><a href="{{ routes.account_url }}" class="link">→ חזרה לחשבון</a></p>
+    <h1>הכתובות שלי</h1>
+    {%- paginate customer.addresses by 10 -%}
+      {%- for address in customer.addresses -%}
+        <div class="testimonial" style="margin-bottom:1rem;">
+          {%- if address == customer.default_address -%}<span class="badge badge--new">ברירת מחדל</span>{%- endif -%}
+          <div>{{ address | format_address }}</div>
+          <details>
+            <summary class="link" style="cursor:pointer;">עריכה</summary>
+            {%- form 'customer_address', address -%}
+              {% render 'address-fields', form: form, id: address.id %}
+              <button type="submit" class="btn btn--primary">שמירה</button>
+            {%- endform -%}
+          </details>
+          <form method="post" action="{{ routes.account_addresses_url }}/{{ address.id }}" onsubmit="return confirm('למחוק את הכתובת?');">
+            <input type="hidden" name="_method" value="delete">
+            <button type="submit" class="cart-item__remove">מחיקה</button>
+          </form>
+        </div>
+      {%- endfor -%}
+    {%- endpaginate -%}
+    <details style="margin-top:2rem;">
+      <summary class="btn btn--secondary">+ הוספת כתובת</summary>
+      <div style="margin-top:1rem;">
+        {%- form 'customer_address', customer.new_address -%}
+          {% render 'address-fields', form: form, id: 'new' %}
+          <button type="submit" class="btn btn--primary">הוספה</button>
+        {%- endform -%}
+      </div>
+    </details>
+  </div>
+</div>
+
+{% schema %}
+{ "name": "כתובות", "settings": [] }
+{% endschema %}

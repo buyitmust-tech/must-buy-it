@@ -1,0 +1,34 @@
+{%- comment -%}
+  Renders a price block.
+  - product: product object (used when variant is not given)
+  - variant: optional variant
+  - size: 'lg' for product page
+  - save_style: 'percent' (default) | 'amount'
+{%- endcomment -%}
+{%- liquid
+  if variant
+    assign price = variant.price
+    assign compare = variant.compare_at_price
+  else
+    assign price = product.price
+    assign compare = product.compare_at_price
+  endif
+  assign on_sale = false
+  if compare > price
+    assign on_sale = true
+    assign saving = compare | minus: price
+    assign save_pct = saving | times: 100.0 | divided_by: compare | round
+  endif
+-%}
+<div class="price{% if on_sale %} price--sale{% endif %}{% if size == 'lg' %} price--lg{% endif %}" data-price-wrap>
+  <span class="price__current" data-price>
+    {%- if variant == blank and product.price_varies -%}החל מ-{%- endif -%}
+    {{- price | money -}}
+  </span>
+  <s class="price__compare" data-compare{% unless on_sale %} hidden{% endunless %}>{% if on_sale %}{{ compare | money }}{% endif %}</s>
+  <span class="price__save" data-save data-style="{{ save_style | default: 'percent' }}"{% unless on_sale %} hidden{% endunless %}>
+    {%- if on_sale -%}
+      {%- if save_style == 'amount' -%}חסכון של {{ saving | money }}{%- else -%}{{ save_pct }}% הנחה{%- endif -%}
+    {%- endif -%}
+  </span>
+</div>

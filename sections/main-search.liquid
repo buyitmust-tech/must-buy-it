@@ -1,0 +1,42 @@
+<div class="page-width section">
+  <div class="section-header">
+    <h1>{% if search.performed %}תוצאות עבור "{{ search.terms | escape }}"{% else %}חיפוש{% endif %}</h1>
+    <form action="{{ routes.search_url }}" method="get" role="search" class="newsletter__form" style="max-width:560px;margin:1rem auto 0;">
+      <input class="input" type="search" name="q" value="{{ search.terms | escape }}" placeholder="מה מחפשים?" aria-label="חיפוש">
+      <input type="hidden" name="type" value="product">
+      <button type="submit" class="btn btn--primary">חיפוש</button>
+    </form>
+  </div>
+  {%- if search.performed -%}
+    {%- paginate search.results by 24 -%}
+      {%- if search.results_count > 0 -%}
+        <p class="muted text-center">נמצאו {{ search.results_count }} תוצאות</p>
+        <div class="grid" style="--cols: 4; --cols-tablet: 3; --cols-mobile: 2;">
+          {%- for item in search.results -%}
+            {%- if item.object_type == 'product' -%}
+              {% render 'product-card', product: item %}
+            {%- else -%}
+              <a href="{{ item.url }}" class="testimonial"><strong>{{ item.title }}</strong><span class="muted">{{ item.content | strip_html | truncate: 120 }}</span></a>
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+        {%- if paginate.pages > 1 -%}
+          <ul class="pagination">
+            {%- for part in paginate.parts -%}
+              <li>{%- if part.is_link -%}<a href="{{ part.url }}">{{ part.title }}</a>{%- else -%}<span{% if part.title == paginate.current_page %} class="is-current"{% endif %}>{{ part.title }}</span>{%- endif -%}</li>
+            {%- endfor -%}
+          </ul>
+        {%- endif -%}
+      {%- else -%}
+        <div class="cart-empty"><h3>לא נמצאו תוצאות</h3><p class="muted">נסו מילת חיפוש אחרת</p><a class="btn btn--primary" href="{{ routes.all_products_collection_url }}">לכל המוצרים</a></div>
+      {%- endif -%}
+    {%- endpaginate -%}
+  {%- endif -%}
+</div>
+
+{% schema %}
+{
+  "name": "תוצאות חיפוש",
+  "settings": []
+}
+{% endschema %}

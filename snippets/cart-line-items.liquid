@@ -1,0 +1,43 @@
+<ul class="cart-items">
+  {%- for item in cart.items -%}
+    <li class="cart-item">
+      <a href="{{ item.url }}">
+        {%- if item.image -%}
+          {{ item.image | image_url: width: 200 | image_tag: class: 'cart-item__img', loading: 'lazy', alt: item.product.title }}
+        {%- else -%}
+          {{ 'product-1' | placeholder_svg_tag: 'cart-item__img placeholder-svg' }}
+        {%- endif -%}
+      </a>
+      <div>
+        <a href="{{ item.url }}" class="cart-item__title">{{ item.product.title | escape }}</a>
+        {%- unless item.product.has_only_default_variant -%}
+          <span class="cart-item__variant">{{ item.variant.title }}</span>
+        {%- endunless -%}
+        {%- for p in item.properties -%}
+          {%- unless p.last == blank or p.first contains '_' -%}
+            <span class="cart-item__variant">{{ p.first }}: {{ p.last }}</span>
+          {%- endunless -%}
+        {%- endfor -%}
+        {%- for d in item.line_level_discount_allocations -%}
+          <span class="cart-item__discount">🏷 {{ d.discount_application.title }} (-{{ d.amount | money }})</span>
+        {%- endfor -%}
+        <div class="cart-item__actions">
+          <div class="qty qty--sm">
+            <button type="button" data-qty-btn="minus" aria-label="הפחת כמות">−</button>
+            <input type="number" min="0" value="{{ item.quantity }}" data-cart-line-qty="{{ forloop.index }}" aria-label="כמות" name="updates[]">
+            <button type="button" data-qty-btn="plus" aria-label="הוסף כמות">+</button>
+          </div>
+          <a href="{{ item.url_to_remove }}" class="cart-item__remove" data-cart-remove="{{ forloop.index }}">הסרה</a>
+        </div>
+      </div>
+      <div class="cart-item__price">
+        {{ item.final_line_price | money }}
+        {%- if item.original_line_price > item.final_line_price -%}
+          <s>{{ item.original_line_price | money }}</s>
+        {%- elsif item.variant.compare_at_price > item.variant.price -%}
+          <s>{{ item.variant.compare_at_price | times: item.quantity | money }}</s>
+        {%- endif -%}
+      </div>
+    </li>
+  {%- endfor -%}
+</ul>

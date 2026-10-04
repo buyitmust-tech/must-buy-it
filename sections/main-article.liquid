@@ -1,0 +1,18 @@
+<article class="page-width">
+  <div class="page-content">
+    <p class="muted">{{ article.published_at | date: '%d/%m/%Y' }}</p>
+    <h1>{{ article.title }}</h1>
+    {%- if article.image -%}
+      <div style="margin: 1.5rem 0;">{{ article.image | image_url: width: 1600 | image_tag: loading: 'eager', widths: '600, 900, 1200, 1600', sizes: '(min-width: 990px) 820px, 100vw', alt: article.title, style: 'border-radius: var(--radius);' }}</div>
+    {%- endif -%}
+    <div class="rte">{{ article.content }}</div>
+    <p style="margin-top:2rem;"><a href="{{ blog.url }}" class="link">→ חזרה לבלוג</a></p>
+  </div>
+</article>
+
+{% schema %}
+{
+  "name": "מאמר",
+  "settings": []
+}
+{% endschema %}

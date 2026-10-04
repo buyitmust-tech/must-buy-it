@@ -1,0 +1,27 @@
+<section class="section{% if section.settings.alt_bg %} section--alt{% endif %}">
+  <div class="page-width">
+    <div class="rich-text reveal">
+      {%- if section.settings.eyebrow != blank -%}<span class="eyebrow">{{ section.settings.eyebrow }}</span>{%- endif -%}
+      {%- if section.settings.heading != blank -%}<h2>{{ section.settings.heading }}</h2>{%- endif -%}
+      {%- if section.settings.text != blank -%}<div class="rte muted">{{ section.settings.text }}</div>{%- endif -%}
+      {%- if section.settings.button_label != blank -%}
+        <div class="hero__ctas"><a href="{{ section.settings.button_link }}" class="btn btn--primary">{{ section.settings.button_label }}</a></div>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "טקסט עשיר",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "כותרת קטנה" },
+    { "type": "text", "id": "heading", "label": "כותרת", "default": "הסיפור שלנו" },
+    { "type": "richtext", "id": "text", "label": "טקסט", "default": "<p>התחלנו מתוך אהבה למוצרים טובים באמת. היום אנחנו בוחרים בקפידה כל פריט בחנות כדי שתקבלו רק את הטוב ביותר.</p>" },
+    { "type": "text", "id": "button_label", "label": "טקסט כפתור" },
+    { "type": "url", "id": "button_link", "label": "קישור" },
+    { "type": "checkbox", "id": "alt_bg", "label": "רקע משני", "default": false }
+  ],
+  "presets": [{ "name": "טקסט עשיר" }]
+}
+{% endschema %}

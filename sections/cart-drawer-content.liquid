@@ -1,0 +1,80 @@
+<div id="CartDrawerContent" class="cart-drawer__content">
+  <div class="drawer__header">
+    <h2>סל הקניות {% if cart.item_count > 0 %}({{ cart.item_count }}){% endif %}</h2>
+    <button type="button" class="icon-btn" data-close-drawer aria-label="סגור">{% render 'icon', name: 'close' %}</button>
+  </div>
+
+  {%- if cart.item_count > 0 -%}
+    <div class="drawer__body">
+      {% render 'free-shipping-bar' %}
+      {% render 'cart-line-items' %}
+
+      {%- assign upsell = settings.cart_upsell_collection -%}
+      {%- if upsell != blank and upsell.products_count > 0 -%}
+        {%- assign in_cart_ids = cart.items | map: 'product_id' -%}
+        {%- capture upsell_items -%}
+          {%- assign shown = 0 -%}
+          {%- for p in upsell.products limit: 8 -%}
+            {%- if shown < 3 and p.available -%}
+              {%- assign skip = false -%}
+              {%- for cid in in_cart_ids -%}{%- if cid == p.id -%}{%- assign skip = true -%}{%- endif -%}{%- endfor -%}
+              {%- unless skip -%}
+                {%- assign shown = shown | plus: 1 -%}
+                <div class="upsell__item">
+                  {%- if p.featured_image -%}{{ p.featured_image | image_url: width: 120 | image_tag: loading: 'lazy', alt: p.title }}{%- endif -%}
+                  <div class="upsell__info">
+                    <strong>{{ p.title | escape }}</strong>
+                    {% render 'price', product: p %}
+                  </div>
+                  {%- if p.has_only_default_variant -%}
+                    {%- form 'product', p, data-ajax-cart: '' -%}
+                      <input type="hidden" name="id" value="{{ p.selected_or_first_available_variant.id }}">
+                      <button type="submit" class="btn btn--primary">הוספה</button>
+                    {%- endform -%}
+                  {%- else -%}
+                    <a href="{{ p.url }}" class="btn btn--secondary">צפייה</a>
+                  {%- endif -%}
+                </div>
+              {%- endunless -%}
+            {%- endif -%}
+          {%- endfor -%}
+        {%- endcapture -%}
+        {%- if upsell_items contains 'upsell__item' -%}
+          <div class="upsell">
+            <h3>אולי תאהבו גם ✨</h3>
+            {{ upsell_items }}
+          </div>
+        {%- endif -%}
+      {%- endif -%}
+    </div>
+
+    <div class="drawer__footer">
+      {% render 'cart-totals' %}
+      <form action="{{ routes.cart_url }}" method="post">
+        <button type="submit" name="checkout" class="btn btn--primary btn--full btn--lg">
+          {% render 'icon', name: 'lock' %} מעבר לתשלום מאובטח
+        </button>
+      </form>
+      {%- if settings.cart_trust_text != blank -%}<p class="cart-trust">{{ settings.cart_trust_text }}</p>{%- endif -%}
+      <ul class="payment-icons" style="justify-content:center;margin-top:.5rem;">
+        {%- for type in shop.enabled_payment_types -%}<li>{{ type | payment_type_svg_tag }}</li>{%- endfor -%}
+      </ul>
+    </div>
+  {%- else -%}
+    <div class="drawer__body">
+      <div class="cart-empty">
+        {% render 'icon', name: 'cart' %}
+        <h3>הסל שלך ריק</h3>
+        <p class="muted">יש לנו המון מוצרים שמחכים לך</p>
+        <a href="{{ routes.all_products_collection_url }}" class="btn btn--primary">להתחיל לקנות</a>
+      </div>
+    </div>
+  {%- endif -%}
+</div>
+
+{% schema %}
+{
+  "name": "תוכן מגירת סל",
+  "settings": []
+}
+{% endschema %}

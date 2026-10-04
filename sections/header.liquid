@@ -1,0 +1,105 @@
+{%- assign menu = section.settings.menu -%}
+<div class="header-wrapper{% if section.settings.layout == 'center' %} header--center{% endif %}">
+  <header class="header page-width">
+    <div class="header__start">
+      <button type="button" class="icon-btn header__menu-btn" data-open-drawer="MenuDrawer" aria-label="תפריט">{% render 'icon', name: 'menu' %}</button>
+      <button type="button" class="icon-btn" data-search-toggle aria-label="חיפוש" style="display:var(--search-mobile, inline-flex)">{% render 'icon', name: 'search' %}</button>
+    </div>
+
+    {%- if request.page_type == 'index' -%}<h1 class="header__logo" style="margin:0;">{%- else -%}<div class="header__logo">{%- endif -%}
+      <a href="{{ routes.root_url }}" style="--logo-h: {{ section.settings.logo_height }}px;">
+        {%- if section.settings.logo != blank -%}
+          {{ section.settings.logo | image_url: width: 600 | image_tag: alt: shop.name, loading: 'eager', style: 'max-height: var(--logo-h); width: auto;' }}
+        {%- else -%}
+          {{ shop.name }}
+        {%- endif -%}
+      </a>
+    {%- if request.page_type == 'index' -%}</h1>{%- else -%}</div>{%- endif -%}
+
+    <nav class="header__nav" aria-label="ניווט ראשי">
+      {%- for link in menu.links -%}
+        <div class="nav-item">
+          <a href="{{ link.url }}" class="nav-link"{% if link.active %} aria-current="page"{% endif %}>
+            {{ link.title }}{% if link.links.size > 0 %} {% render 'icon', name: 'chevron' %}{% endif %}
+          </a>
+          {%- if link.links.size > 0 -%}
+            <div class="nav-dropdown">
+              {%- for child in link.links -%}<a href="{{ child.url }}">{{ child.title }}</a>{%- endfor -%}
+            </div>
+          {%- endif -%}
+        </div>
+      {%- endfor -%}
+    </nav>
+
+    <div class="header__icons">
+      {%- if shop.customer_accounts_enabled -%}
+        <a href="{{ routes.account_url }}" class="icon-btn" aria-label="החשבון שלי">{% render 'icon', name: 'account' %}</a>
+      {%- endif -%}
+      <a href="{{ routes.cart_url }}" class="icon-btn" {% if settings.cart_type == 'drawer' %}data-open-drawer="CartDrawer"{% endif %} aria-label="סל קניות">
+        {% render 'icon', name: 'cart' %}
+        <span class="cart-count" data-cart-count data-count="{{ cart.item_count }}">{{ cart.item_count }}</span>
+      </a>
+    </div>
+  </header>
+
+  <div class="search-modal" id="SearchModal">
+    <form action="{{ routes.search_url }}" method="get" role="search" class="page-width">
+      <input class="input" type="search" name="q" placeholder="מה מחפשים היום?" aria-label="חיפוש" value="{{ search.terms | escape }}">
+      <input type="hidden" name="type" value="product">
+      <button type="submit" class="btn btn--primary">חיפוש</button>
+      <button type="button" class="icon-btn" data-search-toggle aria-label="סגור">{% render 'icon', name: 'close' %}</button>
+    </form>
+  </div>
+</div>
+
+<div class="drawer drawer--start" id="MenuDrawer" aria-hidden="true" role="dialog" aria-modal="true" aria-label="תפריט">
+  <div class="drawer__overlay" data-close-drawer></div>
+  <div class="drawer__panel">
+    <div class="drawer__header">
+      <h2>תפריט</h2>
+      <button type="button" class="icon-btn" data-close-drawer aria-label="סגור">{% render 'icon', name: 'close' %}</button>
+    </div>
+    <div class="drawer__body">
+      <nav class="mobile-nav">
+        {%- for link in menu.links -%}
+          {%- if link.links.size > 0 -%}
+            <details>
+              <summary>{{ link.title }} {% render 'icon', name: 'chevron' %}</summary>
+              <a href="{{ link.url }}">הכל ב{{ link.title }}</a>
+              {%- for child in link.links -%}<a href="{{ child.url }}">{{ child.title }}</a>{%- endfor -%}
+            </details>
+          {%- else -%}
+            <a href="{{ link.url }}">{{ link.title }}</a>
+          {%- endif -%}
+        {%- endfor -%}
+      </nav>
+    </div>
+    <div class="drawer__footer">
+      {%- if shop.customer_accounts_enabled -%}
+        <a href="{{ routes.account_url }}" class="btn btn--secondary btn--full">{% render 'icon', name: 'account' %} החשבון שלי</a>
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "כותרת עליונה",
+  "class": "section-header",
+  "settings": [
+    { "type": "image_picker", "id": "logo", "label": "לוגו" },
+    { "type": "range", "id": "logo_height", "label": "גובה לוגו", "min": 24, "max": 90, "step": 2, "unit": "px", "default": 44 },
+    { "type": "link_list", "id": "menu", "label": "תפריט", "default": "main-menu" },
+    {
+      "type": "select",
+      "id": "layout",
+      "label": "מיקום לוגו בדסקטופ",
+      "options": [
+        { "value": "start", "label": "בצד" },
+        { "value": "center", "label": "במרכז" }
+      ],
+      "default": "start"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,46 @@
+{%- assign s = section.settings -%}
+<section class="section{% if s.alt_bg %} section--alt{% endif %}">
+  <div class="page-width">
+    <div class="iwt{% if s.reverse %} iwt--reverse{% endif %}">
+      <div class="iwt__media reveal">
+        {%- if s.image != blank -%}
+          {{ s.image | image_url: width: 1200 | image_tag: loading: 'lazy', widths: '500, 800, 1200', sizes: '(min-width: 750px) 50vw, 100vw', alt: s.image.alt }}
+        {%- else -%}
+          {{ 'lifestyle-2' | placeholder_svg_tag: 'placeholder-svg' }}
+        {%- endif -%}
+      </div>
+      <div class="reveal">
+        {%- if s.eyebrow != blank -%}<span class="eyebrow">{{ s.eyebrow }}</span>{%- endif -%}
+        <h2>{{ s.heading }}</h2>
+        {%- if s.text != blank -%}<div class="rte muted">{{ s.text }}</div>{%- endif -%}
+        {%- assign bullets = s.bullets | newline_to_br | split: '<br />' -%}
+        {%- if s.bullets != blank -%}
+          <ul class="check-list">
+            {%- for b in bullets -%}{%- assign t = b | strip -%}{%- if t != blank -%}<li>{{ t }}</li>{%- endif -%}{%- endfor -%}
+          </ul>
+        {%- endif -%}
+        {%- if s.button_label != blank -%}
+          <a href="{{ s.button_link }}" class="btn btn--primary">{{ s.button_label }}</a>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "תמונה עם טקסט",
+  "settings": [
+    { "type": "image_picker", "id": "image", "label": "תמונה" },
+    { "type": "checkbox", "id": "reverse", "label": "תמונה בצד השני", "default": false },
+    { "type": "text", "id": "eyebrow", "label": "כותרת קטנה", "default": "למה אנחנו?" },
+    { "type": "text", "id": "heading", "label": "כותרת", "default": "איכות שמרגישים מהשימוש הראשון" },
+    { "type": "richtext", "id": "text", "label": "טקסט", "default": "<p>כל מוצר אצלנו עובר בדיקת איכות קפדנית לפני שהוא מגיע אליכם. אנחנו מאמינים במוצרים שעושים את העבודה — ובשירות שבאמת אכפת לו.</p>" },
+    { "type": "textarea", "id": "bullets", "label": "רשימת יתרונות (שורה לכל יתרון)", "default": "איכות פרימיום במחיר הוגן\nמשלוח מהיר עד הבית\nהחזרה חינם עד 30 יום\nשירות לקוחות בוואטסאפ" },
+    { "type": "text", "id": "button_label", "label": "טקסט כפתור", "default": "לקנייה עכשיו" },
+    { "type": "url", "id": "button_link", "label": "קישור כפתור" },
+    { "type": "checkbox", "id": "alt_bg", "label": "רקע משני", "default": false }
+  ],
+  "presets": [{ "name": "תמונה עם טקסט" }]
+}
+{% endschema %}

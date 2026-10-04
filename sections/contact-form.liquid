@@ -1,0 +1,27 @@
+<div class="page-width">
+  <div class="page-content" style="padding-top:0;">
+    {%- if section.settings.heading != blank -%}<h2>{{ section.settings.heading }}</h2>{%- endif -%}
+    {%- form 'contact', id: 'ContactForm' -%}
+      {%- if form.posted_successfully? -%}
+        <div class="form-message form-message--success">תודה! קיבלנו את הפנייה ונחזור אליך בהקדם.</div>
+      {%- elsif form.errors -%}
+        <div class="form-message form-message--error">{{ form.errors | default_errors }}</div>
+      {%- endif -%}
+      <div class="field"><label for="ContactName">שם</label><input id="ContactName" type="text" name="contact[name]" autocomplete="name" value="{{ form.name }}"></div>
+      <div class="field"><label for="ContactEmail">אימייל *</label><input id="ContactEmail" type="email" name="contact[email]" required autocomplete="email" value="{{ form.email }}"></div>
+      <div class="field"><label for="ContactPhone">טלפון</label><input id="ContactPhone" type="tel" name="contact[phone]" autocomplete="tel" value="{{ form.phone }}"></div>
+      <div class="field"><label for="ContactBody">הודעה</label><textarea id="ContactBody" name="contact[body]">{{ form.body }}</textarea></div>
+      <button type="submit" class="btn btn--primary">שליחה</button>
+    {%- endform -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "טופס יצירת קשר",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "כותרת", "default": "צרו איתנו קשר" }
+  ],
+  "presets": [{ "name": "טופס יצירת קשר" }]
+}
+{% endschema %}

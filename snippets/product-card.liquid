@@ -1,0 +1,68 @@
+{%- comment -%}
+  Usage: {% render 'product-card', product: product, ratio: '1' %}
+{%- endcomment -%}
+{%- liquid
+  assign ratio = ratio | default: 1
+  assign first_available = product.selected_or_first_available_variant
+  assign img1 = product.featured_media
+  assign img2 = product.media[1]
+  assign show_second = false
+  if settings.card_show_second_image and img2 and img2.media_type == 'image'
+    assign show_second = true
+  endif
+-%}
+<div class="card reveal">
+  <div class="card__media" style="--ratio: {{ ratio }};">
+    <div class="card__badges">
+      {%- if product.available == false -%}
+        <span class="badge badge--soldout">אזל</span>
+      {%- elsif product.compare_at_price > product.price -%}
+        {%- assign pct = product.compare_at_price | minus: product.price | times: 100.0 | divided_by: product.compare_at_price | round -%}
+        <span class="badge badge--sale">-{{ pct }}%</span>
+      {%- endif -%}
+      {%- for tag in product.tags -%}
+        {%- if tag == 'חדש' or tag == 'new' -%}<span class="badge badge--new">חדש</span>{%- endif -%}
+        {%- if tag == 'רב מכר' or tag == 'bestseller' -%}<span class="badge">🔥 רב מכר</span>{%- endif -%}
+      {%- endfor -%}
+    </div>
+    {%- if img1 -%}
+      {{ img1.preview_image | image_url: width: 900 | image_tag:
+        loading: 'lazy',
+        widths: '300, 450, 600, 900',
+        sizes: '(min-width: 990px) 25vw, 50vw',
+        class: 'card__img-1',
+        alt: img1.alt | default: product.title
+      }}
+      {%- if show_second -%}
+        {{ img2.preview_image | image_url: width: 900 | image_tag:
+          loading: 'lazy',
+          widths: '300, 450, 600, 900',
+          sizes: '(min-width: 990px) 25vw, 50vw',
+          class: 'card__img-2',
+          alt: img2.alt | default: product.title
+        }}
+      {%- endif -%}
+    {%- else -%}
+      {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+    {%- endif -%}
+    {%- if settings.card_show_quick_add and product.available and product.has_only_default_variant -%}
+      <div class="card__quick card__quick--overlay">
+        {%- form 'product', product, data-ajax-cart: '' -%}
+          <input type="hidden" name="id" value="{{ first_available.id }}">
+          <button type="submit" class="btn btn--primary">+ הוספה מהירה</button>
+        {%- endform -%}
+      </div>
+    {%- endif -%}
+  </div>
+  <div class="card__info">
+    {%- if show_vendor -%}<span class="card__vendor">{{ product.vendor }}</span>{%- endif -%}
+    <h3 class="card__title"><a href="{{ product.url }}">{{ product.title | escape }}</a></h3>
+    {%- if settings.card_show_rating -%}{% render 'stars', product: product %}{%- endif -%}
+    {% render 'price', product: product %}
+    {%- if settings.card_show_quick_add and product.available and product.has_only_default_variant == false -%}
+      <div class="card__quick">
+        <a href="{{ product.url }}" class="btn btn--secondary">בחירת אפשרויות</a>
+      </div>
+    {%- endif -%}
+  </div>
+</div>

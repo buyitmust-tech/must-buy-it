@@ -1,0 +1,30 @@
+<div class="page-width section">
+  <div class="section-header"><h1>{{ blog.title }}</h1></div>
+  {%- paginate blog.articles by 12 -%}
+    <div class="grid blog-grid" style="--cols: 3; --cols-tablet: 2; --cols-mobile: 1;">
+      {%- for article in blog.articles -%}
+        <a href="{{ article.url }}" class="reveal">
+          <div class="article-card__img">
+            {%- if article.image -%}{{ article.image | image_url: width: 800 | image_tag: loading: 'lazy', alt: article.title }}{%- else -%}{{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}{%- endif -%}
+          </div>
+          <h3>{{ article.title }}</h3>
+          <p class="muted">{{ article.excerpt_or_content | strip_html | truncate: 140 }}</p>
+        </a>
+      {%- endfor -%}
+    </div>
+    {%- if paginate.pages > 1 -%}
+      <ul class="pagination">
+        {%- for part in paginate.parts -%}
+          <li>{%- if part.is_link -%}<a href="{{ part.url }}">{{ part.title }}</a>{%- else -%}<span{% if part.title == paginate.current_page %} class="is-current"{% endif %}>{{ part.title }}</span>{%- endif -%}</li>
+        {%- endfor -%}
+      </ul>
+    {%- endif -%}
+  {%- endpaginate -%}
+</div>
+
+{% schema %}
+{
+  "name": "בלוג",
+  "settings": []
+}
+{% endschema %}

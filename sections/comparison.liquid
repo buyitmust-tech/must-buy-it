@@ -1,0 +1,60 @@
+{%- assign s = section.settings -%}
+<section class="section{% if s.alt_bg %} section--alt{% endif %}">
+  <div class="page-width" style="max-width: 860px;">
+    <div class="section-header">
+      {%- if s.heading != blank -%}<h2>{{ s.heading }}</h2>{%- endif -%}
+      {%- if s.text != blank -%}<p>{{ s.text }}</p>{%- endif -%}
+    </div>
+    <div class="compare reveal">
+      <div class="compare__row compare__row--head">
+        <span></span>
+        <span class="compare__us">{{ s.us_label | default: shop.name }}</span>
+        <span>{{ s.them_label }}</span>
+      </div>
+      {%- for block in section.blocks -%}
+        <div class="compare__row" {{ block.shopify_attributes }}>
+          <span class="compare__feature">{{ block.settings.feature }}</span>
+          <span class="compare__us">{% if block.settings.us %}<span class="compare__yes">✓</span>{% else %}<span class="compare__no">✕</span>{% endif %}</span>
+          <span>{% if block.settings.them %}<span class="compare__yes compare__yes--muted">✓</span>{% else %}<span class="compare__no">✕</span>{% endif %}</span>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "טבלת השוואה",
+  "max_blocks": 10,
+  "settings": [
+    { "type": "text", "id": "heading", "label": "כותרת", "default": "למה לקנות דווקא אצלנו?" },
+    { "type": "text", "id": "text", "label": "טקסט" },
+    { "type": "text", "id": "us_label", "label": "אנחנו", "default": "אנחנו" },
+    { "type": "text", "id": "them_label", "label": "אחרים", "default": "אחרים" },
+    { "type": "checkbox", "id": "alt_bg", "label": "רקע משני", "default": false }
+  ],
+  "blocks": [
+    {
+      "type": "row",
+      "name": "שורה",
+      "settings": [
+        { "type": "text", "id": "feature", "label": "מאפיין", "default": "משלוח מהיר" },
+        { "type": "checkbox", "id": "us", "label": "אצלנו", "default": true },
+        { "type": "checkbox", "id": "them", "label": "אצל אחרים", "default": false }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "טבלת השוואה",
+      "blocks": [
+        { "type": "row", "settings": { "feature": "משלוח מהיר עד הבית" } },
+        { "type": "row", "settings": { "feature": "החזרה חינם עד 30 יום" } },
+        { "type": "row", "settings": { "feature": "שירות אישי בוואטסאפ" } },
+        { "type": "row", "settings": { "feature": "בדיקת איכות לכל מוצר" } },
+        { "type": "row", "settings": { "feature": "תשלום מאובטח", "them": true } }
+      ]
+    }
+  ]
+}
+{% endschema %}

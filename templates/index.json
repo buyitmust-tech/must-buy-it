@@ -1,0 +1,72 @@
+{
+  "sections": {
+    "hero": { "type": "hero", "settings": {} },
+    "trust": {
+      "type": "trust-bar",
+      "blocks": {
+        "t1": { "type": "item", "settings": { "icon": "truck", "title": "משלוח מהיר", "text": "חינם מעל ₪199" } },
+        "t2": { "type": "item", "settings": { "icon": "return", "title": "החזרה קלה", "text": "30 יום ללא שאלות" } },
+        "t3": { "type": "item", "settings": { "icon": "lock", "title": "תשלום מאובטח", "text": "הצפנת SSL מלאה" } },
+        "t4": { "type": "item", "settings": { "icon": "support", "title": "שירות אישי", "text": "זמינים בוואטסאפ" } }
+      },
+      "block_order": ["t1", "t2", "t3", "t4"],
+      "settings": { "alt_bg": true }
+    },
+    "bestsellers": {
+      "type": "featured-collection",
+      "settings": { "eyebrow": "🔥 הכי נמכרים", "heading": "המוצרים שכולם מדברים עליהם", "limit": 8, "columns": 4 }
+    },
+    "categories": {
+      "type": "collection-list",
+      "blocks": {
+        "c1": { "type": "collection" },
+        "c2": { "type": "collection" },
+        "c3": { "type": "collection" },
+        "c4": { "type": "collection" }
+      },
+      "block_order": ["c1", "c2", "c3", "c4"],
+      "settings": { "heading": "קנו לפי קטגוריה", "alt_bg": true }
+    },
+    "why": { "type": "image-with-text", "settings": {} },
+    "deal": { "type": "countdown-banner", "settings": {} },
+    "new": {
+      "type": "featured-collection",
+      "settings": { "eyebrow": "✨ חדש באתר", "heading": "הגיעו עכשיו", "limit": 4, "columns": 4, "alt_bg": false }
+    },
+    "compare": {
+      "type": "comparison",
+      "blocks": {
+        "r1": { "type": "row", "settings": { "feature": "משלוח מהיר עד הבית", "us": true, "them": false } },
+        "r2": { "type": "row", "settings": { "feature": "החזרה חינם עד 30 יום", "us": true, "them": false } },
+        "r3": { "type": "row", "settings": { "feature": "שירות אישי בוואטסאפ", "us": true, "them": false } },
+        "r4": { "type": "row", "settings": { "feature": "בדיקת איכות לכל מוצר", "us": true, "them": false } },
+        "r5": { "type": "row", "settings": { "feature": "תשלום מאובטח", "us": true, "them": true } }
+      },
+      "block_order": ["r1", "r2", "r3", "r4", "r5"],
+      "settings": {}
+    },
+    "reviews": {
+      "type": "testimonials",
+      "blocks": {
+        "rv1": { "type": "review", "settings": {} },
+        "rv2": { "type": "review", "settings": { "title": "שירות ברמה אחרת", "text": "הייתה לי שאלה על המידה וענו לי בוואטסאפ תוך דקות. המוצר עצמו מעולה ושווה כל שקל.", "author": "דניאל ל." } },
+        "rv3": { "type": "review", "settings": { "title": "כבר הזמנתי עוד אחד", "text": "קניתי במתנה ואהבו את זה כל כך שהזמנתי גם לעצמי. אריזה יפה ומשלוח מהיר.", "author": "שירה מ." } }
+      },
+      "block_order": ["rv1", "rv2", "rv3"],
+      "settings": {}
+    },
+    "faq": {
+      "type": "faq",
+      "blocks": {
+        "q1": { "type": "question", "settings": {} },
+        "q2": { "type": "question", "settings": { "question": "אפשר להחזיר מוצר?", "answer": "<p>בהחלט. ניתן להחזיר כל מוצר תוך 30 יום מקבלתו, ללא שאלות.</p>" } },
+        "q3": { "type": "question", "settings": { "question": "האם התשלום באתר מאובטח?", "answer": "<p>כן. כל התשלומים עוברים דרך מערכת סליקה מאובטחת עם הצפנת SSL מלאה. איננו שומרים פרטי אשראי.</p>" } },
+        "q4": { "type": "question", "settings": { "question": "איך יוצרים איתכם קשר?", "answer": "<p>אפשר לפנות אלינו בוואטסאפ או במייל ואנחנו עונים מהר — בדרך כלל תוך שעה בשעות הפעילות.</p>" } }
+      },
+      "block_order": ["q1", "q2", "q3", "q4"],
+      "settings": {}
+    },
+    "newsletter": { "type": "newsletter", "settings": {} }
+  },
+  "order": ["hero", "trust", "bestsellers", "categories", "why", "deal", "new", "compare", "reviews", "faq", "newsletter"]
+}

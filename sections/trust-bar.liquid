@@ -1,0 +1,64 @@
+<section class="section section--tight{% if section.settings.alt_bg %} section--alt{% endif %}">
+  <div class="page-width">
+    <div class="trust-bar" style="--cols: {{ section.blocks.size | at_most: 4 }};">
+      {%- for block in section.blocks -%}
+        <div class="trust-item" {{ block.shopify_attributes }}>
+          <span class="trust-item__icon">{% render 'icon', name: block.settings.icon %}</span>
+          <div>
+            <strong>{{ block.settings.title }}</strong>
+            <span>{{ block.settings.text }}</span>
+          </div>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "פס אמון",
+  "max_blocks": 4,
+  "settings": [
+    { "type": "checkbox", "id": "alt_bg", "label": "רקע משני", "default": true }
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "פריט",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "אייקון",
+          "options": [
+            { "value": "truck", "label": "משלוח" },
+            { "value": "return", "label": "החזרה" },
+            { "value": "shield", "label": "אחריות / אבטחה" },
+            { "value": "lock", "label": "תשלום מאובטח" },
+            { "value": "support", "label": "שירות" },
+            { "value": "gift", "label": "מתנה" },
+            { "value": "star", "label": "כוכב" },
+            { "value": "heart", "label": "לב" },
+            { "value": "leaf", "label": "טבעי" },
+            { "value": "clock", "label": "שעון" }
+          ],
+          "default": "truck"
+        },
+        { "type": "text", "id": "title", "label": "כותרת", "default": "משלוח מהיר" },
+        { "type": "text", "id": "text", "label": "טקסט", "default": "עד הבית בכל הארץ" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "פס אמון",
+      "blocks": [
+        { "type": "item", "settings": { "icon": "truck", "title": "משלוח מהיר", "text": "חינם מעל ₪199" } },
+        { "type": "item", "settings": { "icon": "return", "title": "החזרה קלה", "text": "30 יום ללא שאלות" } },
+        { "type": "item", "settings": { "icon": "lock", "title": "תשלום מאובטח", "text": "הצפנת SSL מלאה" } },
+        { "type": "item", "settings": { "icon": "support", "title": "שירות אישי", "text": "זמינים בוואטסאפ" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

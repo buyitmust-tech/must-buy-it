@@ -1,0 +1,36 @@
+<div class="page-width">
+  <div class="customer customer--wide">
+    <p><a href="{{ routes.account_url }}" class="link">→ חזרה לחשבון</a></p>
+    <h1>הזמנה {{ order.name }}</h1>
+    <p class="muted">בוצעה ב-{{ order.created_at | date: '%d/%m/%Y %H:%M' }}</p>
+    {%- if order.cancelled -%}<div class="form-message form-message--error">ההזמנה בוטלה ({{ order.cancel_reason_label }})</div>{%- endif -%}
+    <table>
+      <thead><tr><th>מוצר</th><th>מחיר</th><th>כמות</th><th>סה״כ</th></tr></thead>
+      <tbody>
+        {%- for item in order.line_items -%}
+          <tr>
+            <td>{{ item.title | link_to: item.product.url }}{% if item.fulfillment %}<br><small class="muted">נשלח {{ item.fulfillment.created_at | date: '%d/%m/%Y' }}{% if item.fulfillment.tracking_url %} · <a href="{{ item.fulfillment.tracking_url }}" class="link">מעקב משלוח</a>{% endif %}</small>{% endif %}</td>
+            <td>{{ item.final_price | money }}</td>
+            <td>{{ item.quantity }}</td>
+            <td>{{ item.final_line_price | money }}</td>
+          </tr>
+        {%- endfor -%}
+      </tbody>
+      <tfoot>
+        <tr><td colspan="3">סכום ביניים</td><td>{{ order.line_items_subtotal_price | money }}</td></tr>
+        {%- for d in order.cart_level_discount_applications -%}<tr><td colspan="3">הנחה ({{ d.title }})</td><td>-{{ d.total_allocated_amount | money }}</td></tr>{%- endfor -%}
+        {%- for s in order.shipping_methods -%}<tr><td colspan="3">משלוח ({{ s.title }})</td><td>{{ s.price | money }}</td></tr>{%- endfor -%}
+        {%- for t in order.tax_lines -%}<tr><td colspan="3">{{ t.title }} ({{ t.rate_percentage }}%)</td><td>{{ t.price | money }}</td></tr>{%- endfor -%}
+        <tr><td colspan="3"><strong>סה״כ</strong></td><td><strong>{{ order.total_price | money }}</strong></td></tr>
+      </tfoot>
+    </table>
+    <div class="grid" style="--cols: 2; --cols-tablet: 2; --cols-mobile: 1; margin-top:2rem;">
+      <div><h3>כתובת לחיוב</h3><p class="muted">{{ order.billing_address | format_address }}</p></div>
+      <div><h3>כתובת למשלוח</h3><p class="muted">{{ order.shipping_address | format_address }}</p></div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{ "name": "הזמנה", "settings": [] }
+{% endschema %}

@@ -1,0 +1,20 @@
+{%- comment -%}
+  Usage: {% render 'stars', rating: 4.8, count: 120 %}
+  Or pass product to read the standard reviews.rating / reviews.rating_count metafields.
+{%- endcomment -%}
+{%- liquid
+  assign r = rating
+  assign c = count
+  if product and product.metafields.reviews.rating.value != blank
+    assign r = product.metafields.reviews.rating.value.rating
+    assign c = product.metafields.reviews.rating_count.value
+  endif
+-%}
+{%- if r != blank -%}
+  {%- assign pct = r | times: 20 -%}
+  <div class="stars" aria-label="דירוג {{ r }} מתוך 5">
+    <span class="stars__icons"><span class="stars__fill" style="--rating-pct: {{ pct }}%;"></span></span>
+    {%- if show_number -%}<strong>{{ r | round: 1 }}</strong>{%- endif -%}
+    {%- if c != blank -%}<span>({{ c }}{% if label %} {{ label }}{% endif %})</span>{%- endif -%}
+  </div>
+{%- endif -%}

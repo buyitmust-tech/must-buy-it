@@ -1,0 +1,20 @@
+{%- liquid
+  assign threshold = settings.free_shipping_threshold | times: 100
+  if threshold > 0
+    assign remaining = threshold | minus: cart.total_price
+    assign pct = cart.total_price | times: 100 | divided_by: threshold
+    if pct > 100
+      assign pct = 100
+    endif
+  endif
+-%}
+{%- if threshold > 0 -%}
+  <div class="ship-progress{% if remaining <= 0 %} is-done{% endif %}">
+    {%- if remaining > 0 -%}
+      עוד <strong>{{ remaining | money }}</strong> ומקבלים <strong>משלוח חינם!</strong> 🚚
+    {%- else -%}
+      🎉 מעולה! קיבלת משלוח חינם
+    {%- endif -%}
+    <div class="ship-progress__bar"><span style="width: {{ pct }}%;"></span></div>
+  </div>
+{%- endif -%}

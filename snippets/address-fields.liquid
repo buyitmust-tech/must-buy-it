@@ -1,0 +1,9 @@
+<div class="field"><label for="AddrFirst-{{ id }}">שם פרטי</label><input id="AddrFirst-{{ id }}" type="text" name="address[first_name]" value="{{ form.first_name }}" autocomplete="given-name"></div>
+<div class="field"><label for="AddrLast-{{ id }}">שם משפחה</label><input id="AddrLast-{{ id }}" type="text" name="address[last_name]" value="{{ form.last_name }}" autocomplete="family-name"></div>
+<div class="field"><label for="AddrAddress1-{{ id }}">כתובת</label><input id="AddrAddress1-{{ id }}" type="text" name="address[address1]" value="{{ form.address1 }}" autocomplete="address-line1"></div>
+<div class="field"><label for="AddrAddress2-{{ id }}">דירה / קומה</label><input id="AddrAddress2-{{ id }}" type="text" name="address[address2]" value="{{ form.address2 }}" autocomplete="address-line2"></div>
+<div class="field"><label for="AddrCity-{{ id }}">עיר</label><input id="AddrCity-{{ id }}" type="text" name="address[city]" value="{{ form.city }}" autocomplete="address-level2"></div>
+<div class="field"><label for="AddrCountry-{{ id }}">מדינה</label><select id="AddrCountry-{{ id }}" name="address[country]" data-default="{{ form.country }}" autocomplete="country">{{ all_country_option_tags }}</select></div>
+<div class="field"><label for="AddrZip-{{ id }}">מיקוד</label><input id="AddrZip-{{ id }}" type="text" name="address[zip]" value="{{ form.zip }}" autocomplete="postal-code"></div>
+<div class="field"><label for="AddrPhone-{{ id }}">טלפון</label><input id="AddrPhone-{{ id }}" type="tel" name="address[phone]" value="{{ form.phone }}" autocomplete="tel"></div>
+<label style="display:flex;gap:.5rem;align-items:center;margin-bottom:1rem;">{{ form.set_as_default_checkbox }} כתובת ברירת מחדל</label>

@@ -1,0 +1,33 @@
+<section class="section{% if section.settings.alt_bg %} section--alt{% endif %}">
+  <div class="page-width">
+    <div class="newsletter">
+      {%- if section.settings.heading != blank -%}<h2>{{ section.settings.heading }}</h2>{%- endif -%}
+      {%- if section.settings.text != blank -%}<p class="muted">{{ section.settings.text }}</p>{%- endif -%}
+      {%- form 'customer', id: 'NewsletterForm' -%}
+        <input type="hidden" name="contact[tags]" value="newsletter">
+        {%- if form.posted_successfully? -%}
+          <div class="form-message form-message--success">תודה! נרשמת בהצלחה 🎉</div>
+        {%- else -%}
+          {%- if form.errors -%}<div class="form-message form-message--error">{{ form.errors | default_errors }}</div>{%- endif -%}
+          <div class="newsletter__form">
+            <input class="input" type="email" name="contact[email]" required autocomplete="email" placeholder="כתובת האימייל שלך" aria-label="אימייל">
+            <button type="submit" class="btn btn--primary">{{ section.settings.button_label }}</button>
+          </div>
+        {%- endif -%}
+      {%- endform -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "הרשמה לניוזלטר",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "כותרת", "default": "קבלו 10% הנחה על ההזמנה הראשונה" },
+    { "type": "text", "id": "text", "label": "טקסט", "default": "הצטרפו לרשימת התפוצה וקבלו מבצעים בלעדיים לפני כולם." },
+    { "type": "text", "id": "button_label", "label": "טקסט כפתור", "default": "אני רוצה הנחה" },
+    { "type": "checkbox", "id": "alt_bg", "label": "רקע משני", "default": true }
+  ],
+  "presets": [{ "name": "הרשמה לניוזלטר" }]
+}
+{% endschema %}

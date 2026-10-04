@@ -1,0 +1,16 @@
+{
+  "type": "footer",
+  "name": "Footer group",
+  "sections": {
+    "footer": {
+      "type": "footer",
+      "blocks": {
+        "menu": { "type": "menu", "settings": { "heading": "קישורים", "menu": "footer" } },
+        "text": { "type": "text", "settings": {} }
+      },
+      "block_order": ["menu", "text"],
+      "settings": {}
+    }
+  },
+  "order": ["footer"]
+}

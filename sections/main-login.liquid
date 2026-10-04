@@ -1,0 +1,40 @@
+<div class="page-width">
+  <div class="customer">
+    <div id="RecoverPassword" style="display:none;">
+      <h1>איפוס סיסמה</h1>
+      <p class="muted">נשלח אליך מייל לאיפוס הסיסמה.</p>
+      {%- form 'recover_customer_password' -%}
+        {%- if form.posted_successfully? -%}<div class="form-message form-message--success">שלחנו לך מייל עם קישור לאיפוס.</div>{%- endif -%}
+        {%- if form.errors -%}<div class="form-message form-message--error">{{ form.errors | default_errors }}</div>{%- endif -%}
+        <div class="field"><label for="RecoverEmail">אימייל</label><input type="email" id="RecoverEmail" name="email" required autocomplete="email"></div>
+        <button type="submit" class="btn btn--primary btn--full">שליחה</button>
+        <p style="margin-top:1rem;"><a href="#login" class="link" onclick="document.getElementById('RecoverPassword').style.display='none';document.getElementById('CustomerLogin').style.display='block';">ביטול</a></p>
+      {%- endform -%}
+    </div>
+
+    <div id="CustomerLogin">
+      <h1>התחברות</h1>
+      {%- form 'customer_login', novalidate: 'novalidate' -%}
+        {%- if form.errors -%}<div class="form-message form-message--error">{{ form.errors | default_errors }}</div>{%- endif -%}
+        <div class="field"><label for="CustomerEmail">אימייל</label><input type="email" id="CustomerEmail" name="customer[email]" autocomplete="email" required></div>
+        {%- if form.password_needed -%}
+          <div class="field"><label for="CustomerPassword">סיסמה</label><input type="password" id="CustomerPassword" name="customer[password]" autocomplete="current-password" required></div>
+          <p><a href="#recover" class="link" onclick="document.getElementById('RecoverPassword').style.display='block';document.getElementById('CustomerLogin').style.display='none';">שכחת סיסמה?</a></p>
+        {%- endif -%}
+        <button type="submit" class="btn btn--primary btn--full">כניסה</button>
+        <p class="text-center" style="margin-top:1rem;"><a href="{{ routes.account_register_url }}" class="link">עוד אין לך חשבון? להרשמה</a></p>
+      {%- endform -%}
+    </div>
+
+    {%- if shop.checkout.guest_login -%}
+      <hr style="margin:2rem 0;border:0;border-top:1px solid var(--color-border);">
+      <h2>המשך כאורח</h2>
+      {%- form 'guest_login' -%}<button type="submit" class="btn btn--secondary btn--full">המשך לקופה כאורח</button>{%- endform -%}
+    {%- endif -%}
+  </div>
+</div>
+<script>if (location.hash === '#recover') { document.getElementById('RecoverPassword').style.display = 'block'; document.getElementById('CustomerLogin').style.display = 'none'; }</script>
+
+{% schema %}
+{ "name": "התחברות", "settings": [] }
+{% endschema %}

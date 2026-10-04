@@ -1,0 +1,72 @@
+{%- assign s = section.settings -%}
+<section class="section{% if s.alt_bg %} section--alt{% endif %}">
+  <div class="page-width">
+    <div class="section-header">
+      {%- if s.heading != blank -%}<h2>{{ s.heading }}</h2>{%- endif -%}
+    </div>
+    {%- if s.summary_rating != blank -%}
+      <div class="reviews-summary">
+        {% render 'stars', rating: s.summary_rating %}
+        <strong>{{ s.summary_rating }} מתוך 5</strong>
+        {%- if s.summary_text != blank -%}<span class="muted">{{ s.summary_text }}</span>{%- endif -%}
+      </div>
+    {%- endif -%}
+    <div class="testimonials" style="--cols: {{ s.columns }};">
+      {%- for block in section.blocks -%}
+        <figure class="testimonial reveal" {{ block.shopify_attributes }} style="margin:0;">
+          {% render 'stars', rating: block.settings.rating %}
+          {%- if block.settings.title != blank -%}<strong>{{ block.settings.title }}</strong>{%- endif -%}
+          <blockquote class="testimonial__text" style="margin:0;">{{ block.settings.text }}</blockquote>
+          <figcaption class="testimonial__author">
+            {%- if block.settings.image != blank -%}
+              {{ block.settings.image | image_url: width: 100 | image_tag: class: 'testimonial__avatar', loading: 'lazy', alt: block.settings.author }}
+            {%- else -%}
+              <span class="testimonial__avatar">{{ block.settings.author | slice: 0 }}</span>
+            {%- endif -%}
+            <span>
+              <strong>{{ block.settings.author }}</strong><br>
+              <span class="verified">✓ רכישה מאומתת</span>
+            </span>
+          </figcaption>
+        </figure>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "ביקורות לקוחות",
+  "max_blocks": 12,
+  "settings": [
+    { "type": "text", "id": "heading", "label": "כותרת", "default": "מה הלקוחות שלנו אומרים" },
+    { "type": "text", "id": "summary_rating", "label": "דירוג ממוצע", "default": "4.9" },
+    { "type": "text", "id": "summary_text", "label": "טקסט מתחת לדירוג", "default": "על סמך מעל 2,000 ביקורות" },
+    { "type": "range", "id": "columns", "label": "עמודות", "min": 2, "max": 4, "step": 1, "default": 3 },
+    { "type": "checkbox", "id": "alt_bg", "label": "רקע משני", "default": true }
+  ],
+  "blocks": [
+    {
+      "type": "review",
+      "name": "ביקורת",
+      "settings": [
+        { "type": "range", "id": "rating", "label": "כוכבים", "min": 1, "max": 5, "step": 1, "default": 5 },
+        { "type": "text", "id": "title", "label": "כותרת", "default": "פשוט מושלם!" },
+        { "type": "textarea", "id": "text", "label": "תוכן", "default": "הזמנתי ביום ראשון וזה הגיע כבר ביום שלישי. האיכות מעולה, בדיוק כמו בתמונות. בטוח אזמין שוב!" },
+        { "type": "text", "id": "author", "label": "שם", "default": "מיכל כ." },
+        { "type": "image_picker", "id": "image", "label": "תמונה" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "ביקורות לקוחות",
+      "blocks": [
+        { "type": "review" },
+        { "type": "review", "settings": { "title": "שירות ברמה אחרת", "text": "הייתה לי שאלה על המידה וענו לי בוואטסאפ תוך דקות. המוצר עצמו מעולה ושווה כל שקל.", "author": "דניאל ל." } },
+        { "type": "review", "settings": { "title": "כבר הזמנתי עוד אחד", "text": "קניתי במתנה ואהבו את זה כל כך שהזמנתי גם לעצמי. אריזה יפה ומשלוח מהיר.", "author": "שירה מ." } }
+      ]
+    }
+  ]
+}
+{% endschema %}

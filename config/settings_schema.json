@@ -1,0 +1,81 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "MustBuy",
+    "theme_version": "1.0.0",
+    "theme_author": "Must Buy It",
+    "theme_documentation_url": "https://help.shopify.com/manual/online-store/themes",
+    "theme_support_url": "https://help.shopify.com"
+  },
+  {
+    "name": "צבעים",
+    "settings": [
+      { "type": "color", "id": "color_background", "label": "רקע", "default": "#ffffff" },
+      { "type": "color", "id": "color_background_alt", "label": "רקע משני (אזורים מודגשים)", "default": "#f6f6f8" },
+      { "type": "color", "id": "color_text", "label": "טקסט", "default": "#111827" },
+      { "type": "color", "id": "color_accent", "label": "צבע הנעה לפעולה (כפתורים)", "default": "#ff4d1c" },
+      { "type": "color", "id": "color_accent_text", "label": "טקסט על כפתורים", "default": "#ffffff" },
+      { "type": "color", "id": "color_sale", "label": "צבע מבצע / הנחה", "default": "#e11d48" },
+      { "type": "color", "id": "color_success", "label": "צבע הצלחה / אמון", "default": "#059669" }
+    ]
+  },
+  {
+    "name": "טיפוגרפיה",
+    "settings": [
+      { "type": "font_picker", "id": "type_heading_font", "label": "גופן כותרות", "default": "assistant_n8" },
+      { "type": "font_picker", "id": "type_body_font", "label": "גופן טקסט", "default": "assistant_n4" }
+    ]
+  },
+  {
+    "name": "פריסה",
+    "settings": [
+      { "type": "range", "id": "page_width", "label": "רוחב עמוד מקסימלי", "min": 1000, "max": 1600, "step": 20, "unit": "px", "default": 1280 },
+      { "type": "range", "id": "border_radius", "label": "עיגול פינות כרטיסים", "min": 0, "max": 24, "step": 1, "unit": "px", "default": 12 },
+      { "type": "range", "id": "button_radius", "label": "עיגול פינות כפתורים", "min": 0, "max": 40, "step": 2, "unit": "px", "default": 10 },
+      { "type": "image_picker", "id": "favicon", "label": "Favicon" }
+    ]
+  },
+  {
+    "name": "סל קניות",
+    "settings": [
+      {
+        "type": "select",
+        "id": "cart_type",
+        "label": "סוג סל",
+        "options": [
+          { "value": "drawer", "label": "מגירה צדדית (מומלץ להמרות)" },
+          { "value": "page", "label": "עמוד סל" }
+        ],
+        "default": "drawer"
+      },
+      { "type": "number", "id": "free_shipping_threshold", "label": "סכום למשלוח חינם (₪)", "info": "0 = ללא סרגל התקדמות", "default": 199 },
+      { "type": "text", "id": "cart_trust_text", "label": "טקסט אמון מתחת לכפתור התשלום", "default": "🔒 תשלום מאובטח · החזרה עד 30 יום" },
+      { "type": "collection", "id": "cart_upsell_collection", "label": "קולקציית המלצות בסל (\"אולי תאהבו גם\")" }
+    ]
+  },
+  {
+    "name": "המרות ואמון",
+    "settings": [
+      { "type": "header", "content": "וואטסאפ" },
+      { "type": "text", "id": "whatsapp_number", "label": "מספר וואטסאפ (בפורמט 972501234567)", "info": "השאירו ריק כדי להסתיר את הכפתור" },
+      { "type": "text", "id": "whatsapp_message", "label": "הודעה פותחת", "default": "היי, יש לי שאלה לגבי מוצר באתר" },
+      { "type": "header", "content": "התראות רכישה (Social proof)" },
+      { "type": "checkbox", "id": "show_sales_popup", "label": "הצג התראות \"מישהו רכש עכשיו\"", "default": false },
+      { "type": "collection", "id": "sales_popup_collection", "label": "קולקציה למוצרים בהתראה" },
+      { "type": "text", "id": "sales_popup_names", "label": "שמות (מופרדים בפסיק)", "default": "נועה,דניאל,מיכל,יוסי,שירה,אורי,טל,רוני" },
+      { "type": "text", "id": "sales_popup_cities", "label": "ערים (מופרדות בפסיק)", "default": "תל אביב,חיפה,ירושלים,באר שבע,ראשון לציון,נתניה,אשדוד,פתח תקווה" },
+      { "type": "header", "content": "כרטיסי מוצר" },
+      { "type": "checkbox", "id": "card_show_rating", "label": "הצג כוכבי דירוג בכרטיס מוצר", "info": "משתמש במטאפילד reviews.rating אם קיים", "default": true },
+      { "type": "checkbox", "id": "card_show_quick_add", "label": "הצג כפתור הוספה מהירה לסל", "default": true },
+      { "type": "checkbox", "id": "card_show_second_image", "label": "הצג תמונה שנייה במעבר עכבר", "default": true }
+    ]
+  },
+  {
+    "name": "רשתות חברתיות",
+    "settings": [
+      { "type": "text", "id": "social_instagram", "label": "Instagram" },
+      { "type": "text", "id": "social_facebook", "label": "Facebook" },
+      { "type": "text", "id": "social_tiktok", "label": "TikTok" }
+    ]
+  }
+]

@@ -1,0 +1,18 @@
+<div class="page-width">
+  <div class="customer">
+    <h1>יצירת חשבון</h1>
+    {%- form 'create_customer', novalidate: 'novalidate' -%}
+      {%- if form.errors -%}<div class="form-message form-message--error">{{ form.errors | default_errors }}</div>{%- endif -%}
+      <div class="field"><label for="RegisterFirst">שם פרטי</label><input type="text" id="RegisterFirst" name="customer[first_name]" autocomplete="given-name"></div>
+      <div class="field"><label for="RegisterLast">שם משפחה</label><input type="text" id="RegisterLast" name="customer[last_name]" autocomplete="family-name"></div>
+      <div class="field"><label for="RegisterEmail">אימייל</label><input type="email" id="RegisterEmail" name="customer[email]" autocomplete="email" required></div>
+      <div class="field"><label for="RegisterPassword">סיסמה</label><input type="password" id="RegisterPassword" name="customer[password]" autocomplete="new-password" required></div>
+      <label style="display:flex;gap:.5rem;align-items:center;margin-bottom:1rem;"><input type="checkbox" name="customer[accepts_marketing]" checked> אני רוצה לקבל עדכונים ומבצעים</label>
+      <button type="submit" class="btn btn--primary btn--full">הרשמה</button>
+    {%- endform -%}
+  </div>
+</div>
+
+{% schema %}
+{ "name": "הרשמה", "settings": [] }
+{% endschema %}
