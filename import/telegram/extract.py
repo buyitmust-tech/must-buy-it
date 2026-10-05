@@ -70,7 +70,8 @@ def parse_prices(text):
         label = re.sub(r"\d+\s*\D{0,4}\s*" + CURRENCY, "", label) if before_currency else label.replace(str(price), "", 1)
         label = re.sub(r"بدل\s*\d+", "", label)
         label = re.sub(r"سعر الجملة|السعر المفاجأة|السعر خرافي|بسعر العرض وحرق بس على|بسعر مميز|بسعر|السعر فقط|السعر|فقط|متوفر|عرض ولا يتفوت|للحجم|\bب\b|بـ", " ", label)
-        label = clean(label).strip(" :-–")
+        label = re.sub(r"الجملة|سعر|[()!]", " ", label)
+        label = clean(label).strip(" :-–!()")
         out.append({
             "label": label or None,
             "price": price,
