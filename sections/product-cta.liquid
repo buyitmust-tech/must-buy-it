@@ -1,0 +1,27 @@
+{%- assign cta = product.metafields.page.closing_cta.value | default: section.settings.heading -%}
+{%- if cta != blank -%}
+  <section class="section section--tight">
+    <div class="page-width">
+      <div class="countdown-banner product-cta reveal" style="--cd-bg: {{ section.settings.bg }}; --cd-fg: {{ section.settings.fg }};">
+        <h2>{{ cta }}</h2>
+        <div class="product-cta__price">{% render 'price', product: product %}</div>
+        <a href="#ProductInfo" class="btn btn--primary btn--lg btn--pulse">{{ section.settings.button_label }}</a>
+        {%- if section.settings.subtext != blank -%}<p class="product-cta__sub">{{ section.settings.subtext }}</p>{%- endif -%}
+      </div>
+    </div>
+  </section>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "מוצר: קריאה לפעולה סופית",
+  "settings": [
+    { "type": "paragraph", "content": "הכותרת מגיעה מהמטאפילד page.closing_cta.value של המוצר, או מהטקסט כאן." },
+    { "type": "text", "id": "heading", "label": "כותרת ברירת מחדל", "default": "מוכנים להזמין?" },
+    { "type": "text", "id": "button_label", "label": "טקסט כפתור", "default": "אני רוצה את זה" },
+    { "type": "text", "id": "subtext", "label": "טקסט מתחת לכפתור", "default": "🔒 תשלום מאובטח · משלוח עד הבית · החזרה עד 30 יום" },
+    { "type": "color", "id": "bg", "label": "רקע", "default": "#111827" },
+    { "type": "color", "id": "fg", "label": "טקסט", "default": "#ffffff" }
+  ]
+}
+{% endschema %}

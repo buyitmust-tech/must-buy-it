@@ -1,0 +1,67 @@
+{%- comment -%}
+  Reads product.metafields.page.features (JSON):
+  [{ "icon": "💪", "title": "...", "text": "...", "media": 2 }]
+  "media" = 1-based index of the product image to show next to the row (optional).
+{%- endcomment -%}
+{%- assign features = product.metafields.page.features.value -%}
+{%- if features != blank and features.size > 0 -%}
+  {%- assign has_images = false -%}
+  {%- for f in features -%}
+    {%- if f.media -%}
+      {%- assign mi = f.media | minus: 1 -%}
+      {%- if product.media[mi] -%}{%- assign has_images = true -%}{%- endif -%}
+    {%- endif -%}
+  {%- endfor -%}
+  <section class="section{% if section.settings.alt_bg %} section--alt{% endif %}">
+    <div class="page-width">
+      <div class="section-header">
+        {%- if section.settings.eyebrow != blank -%}<span class="eyebrow">{{ section.settings.eyebrow }}</span>{%- endif -%}
+        <h2>{{ product.metafields.page.features_heading.value | default: section.settings.heading }}</h2>
+      </div>
+      {%- if has_images -%}
+        <div class="feature-rows">
+          {%- for f in features -%}
+            {%- assign m = nil -%}
+            {%- if f.media -%}{%- assign mi = f.media | minus: 1 -%}{%- assign m = product.media[mi] -%}{%- endif -%}
+            <div class="iwt feature-row{% cycle '', ' iwt--reverse' %} reveal">
+              <div class="iwt__media" style="aspect-ratio: 1;">
+                {%- if m -%}
+                  {{ m.preview_image | image_url: width: 1100 | image_tag: loading: 'lazy', widths: '400, 700, 1100', sizes: '(min-width: 750px) 50vw, 100vw', alt: f.title }}
+                {%- else -%}
+                  <div class="feature-row__emoji">{{ f.icon }}</div>
+                {%- endif -%}
+              </div>
+              <div>
+                {%- if f.icon != blank -%}<span class="feature-card__icon">{{ f.icon }}</span>{%- endif -%}
+                <h3 class="feature-row__title">{{ f.title }}</h3>
+                <p class="muted">{{ f.text }}</p>
+              </div>
+            </div>
+          {%- endfor -%}
+        </div>
+      {%- else -%}
+        <div class="feature-cards">
+          {%- for f in features -%}
+            <div class="feature-card reveal">
+              {%- if f.icon != blank -%}<span class="feature-card__icon">{{ f.icon }}</span>{%- endif -%}
+              <h3>{{ f.title }}</h3>
+              <p class="muted">{{ f.text }}</p>
+            </div>
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+    </div>
+  </section>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "מוצר: יתרונות מרכזיים",
+  "settings": [
+    { "type": "paragraph", "content": "התוכן מגיע מהמטאפילד page.features של כל מוצר. אם הוא ריק — הסקשן לא מוצג." },
+    { "type": "text", "id": "eyebrow", "label": "כותרת קטנה", "default": "למה תאהבו אותו" },
+    { "type": "text", "id": "heading", "label": "כותרת ברירת מחדל", "default": "כל מה שהופך אותו לחובה" },
+    { "type": "checkbox", "id": "alt_bg", "label": "רקע משני", "default": false }
+  ]
+}
+{% endschema %}

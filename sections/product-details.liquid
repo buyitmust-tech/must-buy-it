@@ -1,0 +1,48 @@
+{%- comment -%}
+  Reads product.metafields.page.suitable_for (list), page.in_box (list), page.specs (JSON [{ "label", "value" }])
+{%- endcomment -%}
+{%- liquid
+  assign mb = product.metafields.page
+  assign suitable = mb.suitable_for.value
+  assign in_box = mb.in_box.value
+  assign specs = mb.specs.value
+-%}
+{%- if suitable != blank or in_box != blank or specs != blank -%}
+  <section class="section{% if section.settings.alt_bg %} section--alt{% endif %}">
+    <div class="page-width details-grid">
+      {%- if suitable != blank -%}
+        <div class="details-card reveal">
+          <h3>{{ section.settings.suitable_heading }}</h3>
+          <div class="chips">{%- for x in suitable -%}<span class="chip">{{ x }}</span>{%- endfor -%}</div>
+          {%- if mb.suitable_note.value != blank -%}<p class="muted" style="margin:1rem 0 0;">{{ mb.suitable_note.value }}</p>{%- endif -%}
+        </div>
+      {%- endif -%}
+      {%- if in_box != blank -%}
+        <div class="details-card details-card--box reveal">
+          <h3>📦 {{ section.settings.box_heading }}</h3>
+          <ul class="benefits">{%- for x in in_box -%}<li>{{ x }}</li>{%- endfor -%}</ul>
+        </div>
+      {%- endif -%}
+      {%- if specs != blank -%}
+        <div class="details-card reveal">
+          <h3>{{ section.settings.specs_heading }}</h3>
+          <dl class="specs">
+            {%- for sp in specs -%}<div><dt>{{ sp.label }}</dt><dd>{{ sp.value }}</dd></div>{%- endfor -%}
+          </dl>
+        </div>
+      {%- endif -%}
+    </div>
+  </section>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "מוצר: פרטים ומפרט",
+  "settings": [
+    { "type": "text", "id": "suitable_heading", "label": "כותרת \"מתאים ל\"", "default": "מתאים ל:" },
+    { "type": "text", "id": "box_heading", "label": "כותרת \"מה בקופסה\"", "default": "מה בקופסה" },
+    { "type": "text", "id": "specs_heading", "label": "כותרת מפרט", "default": "מפרט טכני" },
+    { "type": "checkbox", "id": "alt_bg", "label": "רקע משני", "default": true }
+  ]
+}
+{% endschema %}

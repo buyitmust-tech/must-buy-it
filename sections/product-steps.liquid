@@ -1,0 +1,31 @@
+{%- comment -%} Reads product.metafields.page.steps (JSON): [{ "title": "...", "text": "..." }] {%- endcomment -%}
+{%- assign steps = product.metafields.page.steps.value -%}
+{%- if steps != blank and steps.size > 0 -%}
+  <section class="section{% if section.settings.alt_bg %} section--alt{% endif %}">
+    <div class="page-width">
+      <div class="section-header">
+        <h2>{{ product.metafields.page.steps_heading.value | default: section.settings.heading }}</h2>
+      </div>
+      <ol class="steps" style="--cols: {{ steps.size | at_most: 4 }};">
+        {%- for st in steps -%}
+          <li class="step reveal">
+            <span class="step__num">{{ forloop.index }}</span>
+            <h3>{{ st.title }}</h3>
+            <p class="muted">{{ st.text }}</p>
+          </li>
+        {%- endfor -%}
+      </ol>
+    </div>
+  </section>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "מוצר: איך זה עובד",
+  "settings": [
+    { "type": "paragraph", "content": "התוכן מגיע מהמטאפילד page.steps של כל מוצר." },
+    { "type": "text", "id": "heading", "label": "כותרת ברירת מחדל", "default": "איך זה עובד? פשוט כמו 1-2-3" },
+    { "type": "checkbox", "id": "alt_bg", "label": "רקע משני", "default": true }
+  ]
+}
+{% endschema %}

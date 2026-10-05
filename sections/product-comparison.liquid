@@ -1,0 +1,37 @@
+{%- comment -%}
+  Reads product.metafields.page.comparison (JSON):
+  { "us": "MoveMate Pro", "them": "גרירה ידנית", "rows": [{ "feature": "...", "us": true, "them": false }] }
+{%- endcomment -%}
+{%- assign cmp = product.metafields.page.comparison.value -%}
+{%- if cmp != blank and cmp.rows.size > 0 -%}
+  <section class="section{% if section.settings.alt_bg %} section--alt{% endif %}">
+    <div class="page-width" style="max-width: 860px;">
+      <div class="section-header"><h2>{{ cmp.heading | default: section.settings.heading }}</h2></div>
+      <div class="compare reveal">
+        <div class="compare__row compare__row--head">
+          <span></span>
+          <span class="compare__us">{{ cmp.us | default: product.title }}</span>
+          <span>{{ cmp.them | default: 'אחרים' }}</span>
+        </div>
+        {%- for row in cmp.rows -%}
+          <div class="compare__row">
+            <span class="compare__feature">{{ row.feature }}</span>
+            <span class="compare__us">{% if row.us %}<span class="compare__yes">✓</span>{% else %}<span class="compare__no">✕</span>{% endif %}</span>
+            <span>{% if row.them %}<span class="compare__yes compare__yes--muted">✓</span>{% else %}<span class="compare__no">✕</span>{% endif %}</span>
+          </div>
+        {%- endfor -%}
+      </div>
+    </div>
+  </section>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "מוצר: טבלת השוואה",
+  "settings": [
+    { "type": "paragraph", "content": "התוכן מגיע מהמטאפילד page.comparison של כל מוצר." },
+    { "type": "text", "id": "heading", "label": "כותרת ברירת מחדל", "default": "למה זה עדיף?" },
+    { "type": "checkbox", "id": "alt_bg", "label": "רקע משני", "default": false }
+  ]
+}
+{% endschema %}

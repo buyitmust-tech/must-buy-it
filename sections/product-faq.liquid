@@ -1,0 +1,55 @@
+{%- comment -%}
+  Product questions from product.metafields.page.faq (JSON [{ "q", "a" }]),
+  followed by the general store questions added as blocks to this section.
+{%- endcomment -%}
+{%- assign faq = product.metafields.page.faq.value -%}
+{%- if faq.size > 0 or section.blocks.size > 0 -%}
+  <section class="section{% if section.settings.alt_bg %} section--alt{% endif %}">
+    <div class="page-width faq-wrap">
+      <div class="section-header"><h2>{{ section.settings.heading }}</h2></div>
+      <div class="accordion">
+        {%- for item in faq -%}
+          <details><summary>{{ item.q }}</summary><div class="accordion__content">{{ item.a }}</div></details>
+        {%- endfor -%}
+        {%- for block in section.blocks -%}
+          <details {{ block.shopify_attributes }}><summary>{{ block.settings.question }}</summary><div class="accordion__content rte">{{ block.settings.answer }}</div></details>
+        {%- endfor -%}
+      </div>
+    </div>
+  </section>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {%- for item in faq -%}
+          { "@type": "Question", "name": {{ item.q | json }}, "acceptedAnswer": { "@type": "Answer", "text": {{ item.a | json }} } }{% if forloop.last == false or section.blocks.size > 0 %},{% endif %}
+        {%- endfor -%}
+        {%- for block in section.blocks -%}
+          { "@type": "Question", "name": {{ block.settings.question | json }}, "acceptedAnswer": { "@type": "Answer", "text": {{ block.settings.answer | strip_html | json }} } }{% unless forloop.last %},{% endunless %}
+        {%- endfor -%}
+      ]
+    }
+  </script>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "מוצר: שאלות נפוצות",
+  "settings": [
+    { "type": "paragraph", "content": "שאלות המוצר מגיעות מהמטאפילד page.faq. שאלות כלליות (משלוח, החזרות) מוסיפים כאן כבלוקים." },
+    { "type": "text", "id": "heading", "label": "כותרת", "default": "שאלות נפוצות" },
+    { "type": "checkbox", "id": "alt_bg", "label": "רקע משני", "default": false }
+  ],
+  "blocks": [
+    {
+      "type": "question",
+      "name": "שאלה כללית",
+      "settings": [
+        { "type": "text", "id": "question", "label": "שאלה", "default": "כמה זמן לוקח המשלוח?" },
+        { "type": "richtext", "id": "answer", "label": "תשובה", "default": "<p>משלוחים יוצאים תוך 1-2 ימי עסקים ומגיעים בדרך כלל תוך 3-7 ימי עסקים.</p>" }
+      ]
+    }
+  ]
+}
+{% endschema %}

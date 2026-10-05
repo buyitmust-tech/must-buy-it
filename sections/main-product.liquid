@@ -3,6 +3,7 @@
   assign current_variant = product.selected_or_first_available_variant
   assign featured = current_variant.featured_media | default: product.featured_media
   assign ratio = s.media_ratio
+  assign mb = product.metafields.page
 -%}
 
 <div class="page-width" data-product-root>
@@ -56,7 +57,7 @@
     </div>
 
     {%- comment -%} ========== Info ========== {%- endcomment -%}
-    <div class="product__info">
+    <div class="product__info" id="ProductInfo">
       {%- for block in section.blocks -%}
         {%- case block.type -%}
           {%- when '@app' -%}
@@ -66,7 +67,11 @@
             <p class="product__vendor" {{ block.shopify_attributes }}>{{ product.vendor }}</p>
 
           {%- when 'title' -%}
-            <h1 class="product__title" {{ block.shopify_attributes }}>{{ product.title }}</h1>
+            <div class="product__heading" {{ block.shopify_attributes }}>
+              {%- if mb.badge.value != blank -%}<span class="badge badge--sale product__badge">{{ mb.badge.value }}</span>{%- endif -%}
+              <h1 class="product__title">{{ product.title }}</h1>
+              {%- if mb.hook.value != blank -%}<p class="product__hook">{{ mb.hook.value }}</p>{%- endif -%}
+            </div>
 
           {%- when 'rating' -%}
             <div {{ block.shopify_attributes }}>
@@ -87,10 +92,16 @@
             <div class="rte" {{ block.shopify_attributes }}>{{ block.settings.text }}</div>
 
           {%- when 'benefits' -%}
-            {%- assign lines = block.settings.items | newline_to_br | split: '<br />' -%}
-            <ul class="benefits" {{ block.shopify_attributes }}>
-              {%- for l in lines -%}{%- assign t = l | strip -%}{%- if t != blank -%}<li>{{ t }}</li>{%- endif -%}{%- endfor -%}
-            </ul>
+            {%- if mb.benefits.value != blank -%}
+              {%- assign lines = mb.benefits.value -%}
+            {%- else -%}
+              {%- assign lines = block.settings.items | newline_to_br | split: '<br />' -%}
+            {%- endif -%}
+            {%- if lines.size > 0 -%}
+              <ul class="benefits" {{ block.shopify_attributes }}>
+                {%- for l in lines -%}{%- assign t = l | strip -%}{%- if t != blank -%}<li>{{ t }}</li>{%- endif -%}{%- endfor -%}
+              </ul>
+            {%- endif -%}
 
           {%- when 'viewers' -%}
             <p class="viewers" data-viewers data-min="{{ block.settings.min }}" data-max="{{ block.settings.max }}" {{ block.shopify_attributes }}>
@@ -120,7 +131,41 @@
               <div class="variants" {{ block.shopify_attributes }}>
                 {%- for option in product.options_with_values -%}
                   {%- assign oi = forloop.index0 -%}
-                  {%- if block.settings.style == 'dropdown' -%}
+                  {%- if block.settings.style == 'bundles' and product.options.size == 1 -%}
+                    {%- liquid
+                      assign popular = mb.popular_variant.value | default: block.settings.popular_index | plus: 0
+                    -%}
+                    <fieldset class="variant-group">
+                      <legend>{{ block.settings.bundle_heading | default: option.name }}</legend>
+                      <div class="bundles">
+                        {%- for value in option.values -%}
+                          {%- liquid
+                            assign v = product.variants[forloop.index0]
+                            assign label_main = value | split: '–' | first | split: ' - ' | first | strip
+                            assign label_sub = value | remove_first: label_main | remove_first: '–' | remove_first: ' - ' | strip
+                            assign is_popular = false
+                            if forloop.index == popular
+                              assign is_popular = true
+                            endif
+                            assign v_compare = v.compare_at_price
+                          -%}
+                          <input type="radio" id="Opt-{{ section.id }}-{{ oi }}-{{ forloop.index0 }}" name="opt-{{ section.id }}-{{ oi }}" value="{{ value | escape }}" data-option-index="{{ oi }}"{% if option.selected_value == value %} checked{% endif %}>
+                          <label class="bundle{% if is_popular %} bundle--popular{% endif %}" for="Opt-{{ section.id }}-{{ oi }}-{{ forloop.index0 }}">
+                            {%- if is_popular and block.settings.popular_label != blank -%}<span class="bundle__tag">{{ block.settings.popular_label }}</span>{%- endif -%}
+                            <span class="bundle__radio" aria-hidden="true"></span>
+                            <span class="bundle__text">
+                              <strong>{{ label_main }}</strong>
+                              {%- if label_sub != blank -%}<span class="bundle__save">{{ label_sub }}</span>{%- endif -%}
+                            </span>
+                            <span class="bundle__price">
+                              <strong>{{ v.price | money }}</strong>
+                              {%- if v_compare > v.price -%}<s>{{ v_compare | money }}</s>{%- endif -%}
+                            </span>
+                          </label>
+                        {%- endfor -%}
+                      </div>
+                    </fieldset>
+                  {%- elsif block.settings.style == 'dropdown' -%}
                     <div class="field">
                       <label for="Option-{{ section.id }}-{{ oi }}">{{ option.name }}</label>
                       <select id="Option-{{ section.id }}-{{ oi }}" class="variant-select" data-option-index="{{ oi }}">
@@ -201,7 +246,8 @@
             </div>
 
           {%- when 'bundle_note' -%}
-            <div class="bundle-note" {{ block.shopify_attributes }}>{{ block.settings.text }}</div>
+            {%- assign note = mb.offer_note.value | default: block.settings.text -%}
+            {%- if note != blank -%}<div class="bundle-note" {{ block.shopify_attributes }}>{{ note }}</div>{%- endif -%}
 
           {%- when 'description' -%}
             {%- if product.description != blank -%}
@@ -305,8 +351,8 @@
       "limit": 1,
       "settings": [
         { "type": "paragraph", "content": "מציג אוטומטית דירוג מאפליקציית ביקורות (מטאפילד reviews.rating). אם אין — יוצג דירוג ברירת המחדל." },
-        { "type": "text", "id": "fallback_rating", "label": "דירוג ברירת מחדל", "default": "4.9" },
-        { "type": "text", "id": "fallback_count", "label": "מספר ביקורות ברירת מחדל", "default": "1,284" }
+        { "type": "text", "id": "fallback_rating", "label": "דירוג ברירת מחדל", "info": "השאירו ריק כדי להציג כוכבים רק מביקורות אמיתיות" },
+        { "type": "text", "id": "fallback_count", "label": "מספר ביקורות ברירת מחדל" }
       ]
     },
     {
@@ -343,7 +389,10 @@
       "name": "בחירת וריאנט",
       "limit": 1,
       "settings": [
-        { "type": "select", "id": "style", "label": "סגנון", "options": [ { "value": "pills", "label": "כפתורים" }, { "value": "dropdown", "label": "רשימה נפתחת" } ], "default": "pills" }
+        { "type": "select", "id": "style", "label": "סגנון", "options": [ { "value": "bundles", "label": "כרטיסי חבילות (מומלץ ל-1/2/3 יחידות)" }, { "value": "pills", "label": "כפתורים" }, { "value": "dropdown", "label": "רשימה נפתחת" } ], "default": "pills", "info": "כרטיסי חבילות פועלים במוצרים עם אפשרות אחת בלבד" },
+        { "type": "text", "id": "bundle_heading", "label": "כותרת מעל כרטיסי חבילות", "default": "בחרו חבילה" },
+        { "type": "range", "id": "popular_index", "label": "חבילה מסומנת כפופולרית (מס׳)", "min": 0, "max": 5, "step": 1, "default": 2, "info": "0 = ללא. ניתן לדרוס במוצר עם מטאפילד page.popular_variant" },
+        { "type": "text", "id": "popular_label", "label": "תווית לחבילה הפופולרית", "default": "⭐ הכי משתלם" }
       ]
     },
     {
@@ -388,7 +437,7 @@
         { "type": "text", "id": "text", "label": "טקסט", "default": "לא מרוצים? מחזירים תוך 30 יום ומקבלים את הכסף בחזרה. בלי שאלות." }
       ]
     },
-    { "type": "bundle_note", "name": "הודעת מבצע", "settings": [ { "type": "text", "id": "text", "label": "טקסט", "default": "🎁 קנו 2 וקבלו 10% הנחה נוספת בקופה" } ] },
+    { "type": "bundle_note", "name": "הודעת מבצע", "settings": [ { "type": "paragraph", "content": "מוצג מהמטאפילד page.offer_note.value של המוצר, או מהטקסט כאן אם המטאפילד ריק." }, { "type": "text", "id": "text", "label": "טקסט ברירת מחדל" } ] },
     {
       "type": "description",
       "name": "תיאור מוצר",

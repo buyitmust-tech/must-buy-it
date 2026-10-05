@@ -6,44 +6,36 @@
         "title": { "type": "title", "settings": {} },
         "rating": { "type": "rating", "settings": {} },
         "price": { "type": "price", "settings": {} },
-        "viewers": { "type": "viewers", "settings": {} },
-        "benefits": { "type": "benefits", "settings": {} },
-        "variants": { "type": "variant_picker", "settings": {} },
+        "benefits": { "type": "benefits", "settings": { "items": "" } },
+        "variants": { "type": "variant_picker", "settings": { "style": "bundles" } },
         "stock": { "type": "inventory", "settings": {} },
-        "buy": { "type": "buy_buttons", "settings": {} },
-        "bundle": { "type": "bundle_note", "settings": {} },
+        "buy": { "type": "buy_buttons", "settings": { "pulse": true } },
+        "offer": { "type": "bundle_note", "settings": {} },
         "delivery": { "type": "delivery", "settings": {} },
         "trust": { "type": "trust_icons", "settings": {} },
         "guarantee": { "type": "guarantee", "settings": {} },
-        "description": { "type": "description", "settings": {} },
+        "description": { "type": "description", "settings": { "open": false } },
         "shipping": { "type": "collapsible_tab", "settings": {} },
-        "returns": { "type": "collapsible_tab", "settings": { "heading": "אחריות והחזרות", "icon": "shield", "content": "<p>כל המוצרים מגיעים עם אחריות מלאה. לא מרוצים? ניתן להחזיר תוך 30 יום ולקבל החזר כספי מלא.</p>" } },
         "payments": { "type": "payment_icons", "settings": {} }
       },
-      "block_order": ["title", "rating", "price", "viewers", "benefits", "variants", "stock", "buy", "bundle", "delivery", "trust", "guarantee", "description", "shipping", "returns", "payments"],
+      "block_order": ["title", "rating", "price", "benefits", "variants", "stock", "buy", "offer", "delivery", "trust", "guarantee", "description", "shipping", "payments"],
       "settings": {}
     },
-    "reviews": {
-      "type": "testimonials",
-      "blocks": {
-        "rv1": { "type": "review", "settings": {} },
-        "rv2": { "type": "review", "settings": { "title": "שירות ברמה אחרת", "text": "הייתה לי שאלה וענו לי בוואטסאפ תוך דקות. המוצר עצמו מעולה ושווה כל שקל.", "author": "דניאל ל." } },
-        "rv3": { "type": "review", "settings": { "title": "כבר הזמנתי עוד אחד", "text": "קניתי במתנה ואהבו את זה כל כך שהזמנתי גם לעצמי. אריזה יפה ומשלוח מהיר.", "author": "שירה מ." } }
-      },
-      "block_order": ["rv1", "rv2", "rv3"],
-      "settings": { "heading": "לקוחות מספרים" }
-    },
-    "related": { "type": "related-products", "settings": {} },
+    "features": { "type": "product-features", "settings": {} },
+    "steps": { "type": "product-steps", "settings": {} },
+    "comparison": { "type": "product-comparison", "settings": {} },
+    "details": { "type": "product-details", "settings": {} },
     "faq": {
-      "type": "faq",
+      "type": "product-faq",
       "blocks": {
-        "q1": { "type": "question", "settings": {} },
-        "q2": { "type": "question", "settings": { "question": "אפשר להחזיר מוצר?", "answer": "<p>בהחלט. ניתן להחזיר כל מוצר תוך 30 יום מקבלתו, ללא שאלות.</p>" } },
-        "q3": { "type": "question", "settings": { "question": "האם התשלום באתר מאובטח?", "answer": "<p>כן. כל התשלומים עוברים דרך מערכת סליקה מאובטחת עם הצפנת SSL מלאה.</p>" } }
+        "ship": { "type": "question", "settings": {} },
+        "ret": { "type": "question", "settings": { "question": "אפשר להחזיר?", "answer": "<p>כן. ניתן להחזיר תוך 30 יום מקבלת המוצר.</p>" } }
       },
-      "block_order": ["q1", "q2", "q3"],
+      "block_order": ["ship", "ret"],
       "settings": {}
-    }
+    },
+    "cta": { "type": "product-cta", "settings": {} },
+    "related": { "type": "related-products", "settings": {} }
   },
-  "order": ["main", "reviews", "related", "faq"]
+  "order": ["main", "features", "steps", "comparison", "details", "faq", "cta", "related"]
 }
