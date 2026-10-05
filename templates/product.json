@@ -3,39 +3,148 @@
     "main": {
       "type": "main-product",
       "blocks": {
-        "title": { "type": "title", "settings": {} },
-        "rating": { "type": "rating", "settings": {} },
-        "price": { "type": "price", "settings": {} },
-        "benefits": { "type": "benefits", "settings": { "items": "" } },
-        "variants": { "type": "variant_picker", "settings": { "style": "bundles" } },
-        "stock": { "type": "inventory", "settings": {} },
-        "buy": { "type": "buy_buttons", "settings": { "pulse": true } },
-        "offer": { "type": "bundle_note", "settings": {} },
-        "delivery": { "type": "delivery", "settings": {} },
-        "trust": { "type": "trust_icons", "settings": {} },
-        "guarantee": { "type": "guarantee", "settings": {} },
-        "description": { "type": "description", "settings": { "open": false } },
-        "shipping": { "type": "collapsible_tab", "settings": {} },
-        "payments": { "type": "payment_icons", "settings": {} }
+        "title": {
+          "type": "title",
+          "settings": {}
+        },
+        "rating": {
+          "type": "rating",
+          "settings": {}
+        },
+        "price": {
+          "type": "price",
+          "settings": {}
+        },
+        "benefits": {
+          "type": "benefits",
+          "settings": {
+            "items": ""
+          }
+        },
+        "variants": {
+          "type": "variant_picker",
+          "settings": {
+            "style": "bundles"
+          }
+        },
+        "stock": {
+          "type": "inventory",
+          "settings": {}
+        },
+        "buy": {
+          "type": "buy_buttons",
+          "settings": {
+            "pulse": true
+          }
+        },
+        "offer": {
+          "type": "bundle_note",
+          "settings": {}
+        },
+        "delivery": {
+          "type": "delivery",
+          "settings": {}
+        },
+        "trust": {
+          "type": "trust_icons",
+          "settings": {}
+        },
+        "guarantee": {
+          "type": "guarantee",
+          "settings": {}
+        },
+        "description": {
+          "type": "description",
+          "settings": {
+            "open": false
+          }
+        },
+        "shipping": {
+          "type": "collapsible_tab",
+          "settings": {}
+        },
+        "payments": {
+          "type": "payment_icons",
+          "settings": {}
+        }
       },
-      "block_order": ["title", "rating", "price", "benefits", "variants", "stock", "buy", "offer", "delivery", "trust", "guarantee", "description", "shipping", "payments"],
+      "block_order": [
+        "title",
+        "rating",
+        "price",
+        "benefits",
+        "variants",
+        "stock",
+        "buy",
+        "offer",
+        "delivery",
+        "trust",
+        "guarantee",
+        "description",
+        "shipping",
+        "payments"
+      ],
       "settings": {}
     },
-    "features": { "type": "product-features", "settings": {} },
-    "steps": { "type": "product-steps", "settings": {} },
-    "comparison": { "type": "product-comparison", "settings": {} },
-    "details": { "type": "product-details", "settings": {} },
+    "features": {
+      "type": "product-features",
+      "settings": {}
+    },
+    "steps": {
+      "type": "product-steps",
+      "settings": {}
+    },
+    "comparison": {
+      "type": "product-comparison",
+      "settings": {}
+    },
+    "details": {
+      "type": "product-details",
+      "settings": {}
+    },
     "faq": {
       "type": "product-faq",
       "blocks": {
-        "ship": { "type": "question", "settings": {} },
-        "ret": { "type": "question", "settings": { "question": "אפשר להחזיר?", "answer": "<p>כן. ניתן להחזיר תוך 30 יום מקבלת המוצר.</p>" } }
+        "ship": {
+          "type": "question",
+          "settings": {}
+        },
+        "ret": {
+          "type": "question",
+          "settings": {
+            "question": "אפשר להחזיר?",
+            "answer": "<p>כן. ניתן להחזיר תוך 30 יום מקבלת המוצר.</p>"
+          }
+        }
       },
-      "block_order": ["ship", "ret"],
+      "block_order": [
+        "ship",
+        "ret"
+      ],
       "settings": {}
     },
-    "cta": { "type": "product-cta", "settings": {} },
-    "related": { "type": "related-products", "settings": {} }
+    "cta": {
+      "type": "product-cta",
+      "settings": {}
+    },
+    "related": {
+      "type": "related-products",
+      "settings": {}
+    },
+    "gallery": {
+      "type": "product-gallery",
+      "settings": {}
+    }
   },
-  "order": ["main", "features", "steps", "comparison", "details", "faq", "cta", "related"]
+  "order": [
+    "main",
+    "features",
+    "gallery",
+    "steps",
+    "comparison",
+    "details",
+    "faq",
+    "cta",
+    "related"
+  ]
 }

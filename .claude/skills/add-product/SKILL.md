@@ -20,9 +20,16 @@ You don't need to touch the theme code for a new product.
    - Bundles: one option named "כמות" ("Quantity") with values like `ערכה אחת` / `2 ערכות – חוסכים ₪49` (the text after the `–` shows up as a green savings tag).
      `compareAtPrice` for a bundle = unit price × quantity (only a real price, never an inflated one).
    - Images: the first is the main image; after it come usage, close-up, and before/after images. Write a Hebrew alt text for each.
+     If the images are already in Content → Files (e.g., from the Telegram import), **don't** upload them again: find them with `files(query: "filename:<name>")`
+     (Shopify replaces `@` in the name with `_`) and attach them with `fileUpdate` + `referencesToAdd: [productId]`, in the order you want.
+   - The images on cdn.shopify.com are not reachable from this environment, so you can't see their content. Keep the source order and tell the user they can drag the main image in the admin.
 4. **Fill the metafields** with `metafieldsSet` (see the table). JSON fields are passed as a JSON string.
-5. **Add to a collection** (`add-to-collection`) — at least the relevant collection, and the homepage collection if it's a bestseller.
-6. **Check**: query the product back with `graphql_query` and confirm every field was saved. Give the user the link to the product page (`https://8bwvfe-za.myshopify.com/products/<handle>`; with an unpublished theme, add `?preview_theme_id=<id>`).
+5. **Publish to the online store**: `publishablePublish` with the "חנות מקוונת" ("Online Store") publication (`publications` query). Without this the product is ACTIVE but has no page.
+6. **Add to a collection** (`add-to-collection`) — at least the relevant collection, and the homepage collection if it's a bestseller.
+7. **Check**: query the product back with `graphql_query` and confirm every field was saved. Give the user the link to the product page (`https://8bwvfe-za.myshopify.com/products/<handle>`; with an unpublished theme, add `?preview_theme_id=<id>`).
+
+## Theme changes
+The MustBuy theme is live (MAIN), and writes to the live theme are blocked. For a theme change: `themeDuplicate` the live theme → check that `templates/*.json` and `config/settings_data.json` in the copy weren't changed by the user in the editor (don't erase their changes) → `themeFilesUpsert` to the copy → the user publishes it.
 
 ## Fields (namespace `page`)
 

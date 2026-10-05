@@ -4,5 +4,5 @@
 - The product page is built from metafields in the `page` namespace — the full workflow for adding a product is in `.claude/skills/add-product/SKILL.md`.
 - Each product's content is saved in `products/<handle>.json`.
 - Before uploading theme changes, run theme-check (`@shopify/theme-check-node`) and make sure there are 0 errors.
-- Theme changes are uploaded to the unpublished theme (writes to the live theme are blocked); the user publishes it themselves in the admin.
+- The MustBuy theme is live. Theme changes: duplicate the live theme (`themeDuplicate`), upload the changes to the copy, and the user publishes it themselves in the admin (writes to the live theme are blocked).
 - Don't invent social proof (reviews, ratings, viewers, recent purchases) or fake prices.
