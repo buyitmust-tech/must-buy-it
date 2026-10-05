@@ -1,0 +1,128 @@
+{
+  "source_channel": "منتجات للاعلنات الممولة",
+  "source_file": "result.json",
+  "media_base": "ChatExport_2026-10-05/",
+  "count": 4,
+  "skipped": [
+    {
+      "reason": "הודעת טקסט קצרה שאינה מוצר",
+      "message_ids": [
+        7411
+      ],
+      "dates": [
+        "2025-08-06T22:30:04"
+      ],
+      "media": [],
+      "text": ".."
+    },
+    {
+      "reason": "הודעת טקסט קצרה שאינה מוצר",
+      "message_ids": [
+        7636
+      ],
+      "dates": [
+        "2025-08-16T16:11:37"
+      ],
+      "media": [],
+      "text": "ارفعي المنتج هاذا"
+    },
+    {
+      "reason": "מדיה בלי טקסט (פער של יותר מ-60 שניות עד ההודעה הבאה)",
+      "message_ids": [
+        9843,
+        9844,
+        9845,
+        9846,
+        9847,
+        9848,
+        9849,
+        9850,
+        9851
+      ],
+      "dates": [
+        "2026-06-04T12:58:15"
+      ],
+      "media": [
+        {
+          "type": "video",
+          "path": "video_files/IMG_0269.MP4",
+          "thumbnail": "video_files/IMG_0269.MP4_thumb.jpg",
+          "file_name": "IMG_0269.MP4",
+          "duration_seconds": 23,
+          "message_id": 9843
+        },
+        {
+          "type": "video",
+          "path": "video_files/IMG_0270.MP4",
+          "thumbnail": "video_files/IMG_0270.MP4_thumb.jpg",
+          "file_name": "IMG_0270.MP4",
+          "duration_seconds": 12,
+          "message_id": 9844
+        },
+        {
+          "type": "video",
+          "path": "video_files/IMG_0272.MP4",
+          "thumbnail": "video_files/IMG_0272.MP4_thumb.jpg",
+          "file_name": "IMG_0272.MP4",
+          "duration_seconds": 20,
+          "message_id": 9845
+        },
+        {
+          "type": "photo",
+          "path": "photos/photo_432@04-06-2026_12-58-15.jpg",
+          "width": 500,
+          "height": 500,
+          "message_id": 9846
+        },
+        {
+          "type": "photo",
+          "path": "photos/photo_433@04-06-2026_12-58-15.jpg",
+          "width": 500,
+          "height": 500,
+          "message_id": 9847
+        },
+        {
+          "type": "photo",
+          "path": "photos/photo_434@04-06-2026_12-58-15.jpg",
+          "width": 500,
+          "height": 500,
+          "message_id": 9848
+        },
+        {
+          "type": "photo",
+          "path": "photos/photo_435@04-06-2026_12-58-15.jpg",
+          "width": 500,
+          "height": 500,
+          "message_id": 9849
+        },
+        {
+          "type": "photo",
+          "path": "photos/photo_434@04-06-2026_12-58-15.jpg",
+          "width": 500,
+          "height": 500,
+          "message_id": 9850
+        },
+        {
+          "type": "video",
+          "path": "video_files/IMG_0277.MP4",
+          "thumbnail": "video_files/IMG_0277.MP4_thumb.jpg",
+          "file_name": "IMG_0277.MP4",
+          "duration_seconds": 60,
+          "message_id": 9851
+        }
+      ],
+      "text": null
+    },
+    {
+      "reason": "הודעת טקסט קצרה שאינה מוצר",
+      "message_ids": [
+        9888
+      ],
+      "dates": [
+        "2026-06-04T17:57:39"
+      ],
+      "media": [],
+      "text": "…."
+    }
+  ]
+}
