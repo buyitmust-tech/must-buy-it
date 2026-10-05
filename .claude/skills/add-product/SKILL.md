@@ -16,6 +16,14 @@ You don't need to touch the theme code for a new product.
 2. **Write the copy** following the rules below, and save it as `products/<handle>.json` in the repo (the source of truth + a backup).
 3. **Create or update the product** in Shopify (`create-product` / `update-product`):
    - A clear title in Hebrew: `<brand/name> – <what it does>`.
+   - **SEO** (required for every product):
+     - `handle` short in English with dashes (`over-sink-dish-rack`). Hebrew in the URL turns into %D7… when shared.
+       When changing the handle of an existing product: `productUpdate` with `redirectNewHandle: true`, so the old address redirects.
+     - `seo.title` up to 60 characters: the main search phrase in Hebrew first, then ` | Must Buy It`.
+     - `seo.description` up to 155 characters: what it is + 2–3 benefits, with the search phrase.
+     - `tags`: 2–4 topic tags in Hebrew; `productType` = the category (מטבח / טיפוח ויופי / תינוקות / אחסון וסידור — kitchen / grooming & beauty / babies / storage & organizing).
+     - Image alt: a **different** description for each image, around the search phrase (not the same text 12 times).
+   - `tools/product_payload.py products/<handle>.json` builds the `productSet` input (including handle, seo, tags) from the file.
    - `descriptionHtml`: only 2–3 short opening paragraphs (the rest lives in the metafields — don't duplicate it).
    - Bundles: one option named "כמות" ("Quantity") with values like `ערכה אחת` / `2 ערכות – חוסכים ₪49` (the text after the `–` shows up as a green savings tag).
      `compareAtPrice` for a bundle = unit price × quantity (only a real price, never an inflated one).
