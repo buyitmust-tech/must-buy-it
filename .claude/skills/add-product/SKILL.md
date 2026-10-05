@@ -37,7 +37,10 @@ You don't need to touch the theme code for a new product.
 7. **Check**: query the product back with `graphql_query` and confirm every field was saved. Give the user the link to the product page (`https://8bwvfe-za.myshopify.com/products/<handle>`; with an unpublished theme, add `?preview_theme_id=<id>`).
 
 ## Theme changes
-The MustBuy theme is live (MAIN), and writes to the live theme are blocked. For a theme change: `themeDuplicate` the live theme → check that `templates/*.json` and `config/settings_data.json` in the copy weren't changed by the user in the editor (don't erase their changes) → `themeFilesUpsert` to the copy → the user publishes it.
+The MustBuy theme is live (MAIN), and writes to the live theme are blocked.
+**Watch out:** the user (or an app) can edit the live theme directly; for example, a ChatMaxima widget was added to `layout/theme.liquid`. Before uploading a file, compare its size/content against the live theme and merge their changes; don't overwrite them.
+**Watch out 2:** `themeFilesUpsert` with `body.type: URL` runs in the background and **fails silently** on a Liquid error. After every upload, check the file size in the theme (or upload with `TEXT`, which returns errors immediately).
+Shopify's Liquid doesn't allow a `}` character inside a string inside `{{ }}` (e.g. `'?q={x}'`); use `capture` with plain text instead. For a theme change: `themeDuplicate` the live theme → check that `templates/*.json` and `config/settings_data.json` in the copy weren't changed by the user in the editor (don't erase their changes) → `themeFilesUpsert` to the copy → the user publishes it.
 
 ## Fields (namespace `page`)
 

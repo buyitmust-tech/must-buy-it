@@ -107,7 +107,8 @@
               "url": {{ request.origin | append: routes.root_url | json }},
               "potentialAction": {
                 "@type": "SearchAction",
-                "target": {{ request.origin | append: routes.search_url | append: '?q={search_term_string}&type=product' | json }},
+                {%- capture search_target -%}{{ request.origin }}{{ routes.search_url }}?q={search_term_string}&type=product{%- endcapture -%}
+                "target": {{ search_target | json }},
                 "query-input": "required name=search_term_string"
               }
             }
@@ -173,5 +174,10 @@
         }
       </script>
     {%- endif -%}
+    {%- comment -%} ChatMaxima chat widget (added by the store owner in the live theme) {%- endcomment -%}
+    <script>
+      window.chatmaximaConfig = { token: "fx9u1octlk" };
+      if (!document.getElementById("fx9u1octlk")) { const s = document.createElement("script"); s.id = "fx9u1octlk"; s.src = "https://widget.chatmaxima.com/embed.min.js"; s.defer = true; document.body.appendChild(s); }
+    </script>
   </body>
 </html>
