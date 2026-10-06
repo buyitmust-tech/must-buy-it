@@ -1,10 +1,23 @@
-{%- assign menu_blocks = section.blocks | where: 'type', 'menu' -%}
+{%- assign brand = section.settings.heading | default: shop.name -%}
+{%- assign column_count = section.blocks.size | at_least: 1 -%}
 <footer class="footer" style="--footer-bg: {{ section.settings.bg }}; --footer-fg: {{ section.settings.fg }};">
   <div class="page-width">
-    <div class="footer__grid" style="--cols: {{ menu_blocks.size | at_least: 1 }};">
-      <div>
-        <h3>{{ section.settings.heading | default: shop.name }}</h3>
-        {%- if section.settings.text != blank -%}<div class="rte">{{ section.settings.text }}</div>{%- endif -%}
+    <div class="footer__grid" style="--cols: {{ column_count }};">
+      <div class="footer__brand">
+        <a href="{{ routes.root_url }}" class="footer__logo">{{ brand }}</a>
+        {%- if section.settings.text != blank -%}<div class="rte footer__about">{{ section.settings.text }}</div>{%- endif -%}
+        <ul class="footer__contact">
+          {%- if shop.email != blank -%}
+            <li>{% render 'icon', name: 'mail' %}<a href="mailto:{{ shop.email }}">{{ shop.email }}</a></li>
+          {%- endif -%}
+          {%- if settings.whatsapp_number != blank -%}
+            {%- assign wa_number = settings.whatsapp_number | remove: '+' | remove: ' ' | remove: '-' -%}
+            <li>{% render 'icon', name: 'whatsapp' %}<a href="https://wa.me/{{ wa_number }}" target="_blank" rel="noopener">וואטסאפ: {{ settings.whatsapp_number }}</a></li>
+          {%- endif -%}
+          {%- if section.settings.hours != blank -%}
+            <li>{% render 'icon', name: 'clock' %}<span>{{ section.settings.hours }}</span></li>
+          {%- endif -%}
+        </ul>
         <div class="socials">
           {%- if settings.social_instagram != blank -%}<a href="{{ settings.social_instagram }}" target="_blank" rel="noopener" aria-label="Instagram">{% render 'icon', name: 'instagram' %}</a>{%- endif -%}
           {%- if settings.social_facebook != blank -%}<a href="{{ settings.social_facebook }}" target="_blank" rel="noopener" aria-label="Facebook">{% render 'icon', name: 'facebook' %}</a>{%- endif -%}
@@ -12,11 +25,11 @@
         </div>
       </div>
       {%- for block in section.blocks -%}
-        <div {{ block.shopify_attributes }}>
+        <div class="footer__col" {{ block.shopify_attributes }}>
           {%- case block.type -%}
             {%- when 'menu' -%}
               <h3>{{ block.settings.heading | default: block.settings.menu.title }}</h3>
-              <ul>
+              <ul class="footer__links">
                 {%- for link in block.settings.menu.links -%}<li><a href="{{ link.url }}">{{ link.title }}</a></li>{%- endfor -%}
               </ul>
             {%- when 'text' -%}
@@ -27,7 +40,14 @@
       {%- endfor -%}
     </div>
     <div class="footer__bottom">
-      <span>&copy; {{ 'now' | date: '%Y' }} {{ shop.name }}. כל הזכויות שמורות.</span>
+      <span>&copy; {{ 'now' | date: '%Y' }} {{ brand }}. כל הזכויות שמורות.</span>
+      {%- assign legal_handles = section.settings.legal_pages | split: ',' -%}
+      <ul class="footer__legal">
+        {%- for handle in legal_handles -%}
+          {%- assign legal_page = pages[handle] -%}
+          {%- if legal_page != empty -%}<li><a href="{{ legal_page.url }}">{{ legal_page.title }}</a></li>{%- endif -%}
+        {%- endfor -%}
+      </ul>
       {%- if section.settings.show_payment -%}
         <ul class="payment-icons" aria-label="אמצעי תשלום">
           {%- for type in shop.enabled_payment_types -%}<li>{{ type | payment_type_svg_tag }}</li>{%- endfor -%}
@@ -43,8 +63,10 @@
   "class": "section-footer",
   "max_blocks": 4,
   "settings": [
-    { "type": "text", "id": "heading", "label": "כותרת" },
+    { "type": "text", "id": "heading", "label": "שם המותג" },
     { "type": "richtext", "id": "text", "label": "טקסט", "default": "<p>המוצרים הכי שווים, במחירים הכי טובים. משלוח מהיר לכל הארץ ושירות לקוחות אמיתי.</p>" },
+    { "type": "text", "id": "hours", "label": "שעות פעילות", "default": "א׳-ה׳ 9:00-18:00" },
+    { "type": "text", "id": "legal_pages", "label": "קישורים משפטיים בתחתית (handles מופרדים בפסיק)", "default": "terms-of-service,privacy-policy,accessibility" },
     { "type": "checkbox", "id": "show_payment", "label": "הצג אייקוני תשלום", "default": true },
     { "type": "color", "id": "bg", "label": "רקע", "default": "#0b1220" },
     { "type": "color", "id": "fg", "label": "טקסט", "default": "#e5e7eb" }
