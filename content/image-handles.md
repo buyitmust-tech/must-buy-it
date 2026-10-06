@@ -40,7 +40,7 @@
 
 ## 🏠 בית ועיצוב
 
-- `movemate-pro` – 
+- `movemate-pro` – MoveMate Pro – ערכה להזזת רהיטים כבדים
 - `clothes-drying-cabinet` – ארון ייבוש כביסה חשמלי – ייבוש מהיר בבית
 - `pop-up-mosquito-net` – כילה מתקפלת נגד יתושים – נפתחת בשנייה
 - `electric-mosquito-killer` – קוטל יתושים חשמלי DSP KD3100 – עד 80 מ״ר
