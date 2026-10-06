@@ -23,12 +23,12 @@
 <div class="price{% if on_sale %} price--sale{% endif %}{% if size == 'lg' %} price--lg{% endif %}" data-price-wrap>
   <span class="price__current" data-price>
     {%- if variant == blank and product.price_varies -%}החל מ-{%- endif -%}
-    {{- price | money -}}
+    {% render 'money', cents: price %}
   </span>
-  <s class="price__compare" data-compare{% unless on_sale %} hidden{% endunless %}>{% if on_sale %}{{ compare | money }}{% endif %}</s>
+  <s class="price__compare" data-compare{% unless on_sale %} hidden{% endunless %}>{% if on_sale %}{% render 'money', cents: compare %}{% endif %}</s>
   <span class="price__save" data-save data-style="{{ save_style | default: 'percent' }}"{% unless on_sale %} hidden{% endunless %}>
     {%- if on_sale -%}
-      {%- if save_style == 'amount' -%}חסכון של {{ saving | money }}{%- else -%}{{ save_pct }}% הנחה{%- endif -%}
+      {%- if save_style == 'amount' -%}חסכון של {% render 'money', cents: saving %}{%- else -%}{{ save_pct }}% הנחה{%- endif -%}
     {%- endif -%}
   </span>
 </div>

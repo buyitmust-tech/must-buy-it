@@ -19,7 +19,7 @@
           {%- endunless -%}
         {%- endfor -%}
         {%- for d in item.line_level_discount_allocations -%}
-          <span class="cart-item__discount">🏷 {{ d.discount_application.title }} (-{{ d.amount | money }})</span>
+          <span class="cart-item__discount">🏷 {{ d.discount_application.title }} (-{% render 'money', cents: d.amount %})</span>
         {%- endfor -%}
         <div class="cart-item__actions">
           <div class="qty qty--sm">
@@ -31,11 +31,11 @@
         </div>
       </div>
       <div class="cart-item__price">
-        {{ item.final_line_price | money }}
+        {% render 'money', cents: item.final_line_price %}
         {%- if item.original_line_price > item.final_line_price -%}
-          <s>{{ item.original_line_price | money }}</s>
+          <s>{% render 'money', cents: item.original_line_price %}</s>
         {%- elsif item.variant.compare_at_price > item.variant.price -%}
-          <s>{{ item.variant.compare_at_price | times: item.quantity | money }}</s>
+          <s>{%- assign line_compare = item.variant.compare_at_price | times: item.quantity -%}{% render 'money', cents: line_compare %}</s>
         {%- endif -%}
       </div>
     </li>

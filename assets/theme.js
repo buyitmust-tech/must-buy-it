@@ -25,7 +25,8 @@
       case 'amount_no_decimals_with_comma_separator': value = fmt(cents, 0, '.', ','); break;
       default: value = fmt(cents, 2);
     }
-    return format.replace(placeholder, value);
+    // Israeli display: ₪249 instead of ₪249.00 (keeps agorot like ₪99.90)
+    return format.replace(placeholder, value.replace(/[.,]00$/, ''));
   }
   window.theme.formatMoney = formatMoney;
 

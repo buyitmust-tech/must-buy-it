@@ -24,6 +24,7 @@ You don't need to touch the theme code for a new product.
      - `tags`: 2–4 topic tags in Hebrew; `productType` = the category (מטבח / טיפוח ויופי / תינוקות / אחסון וסידור — kitchen / grooming & beauty / babies / storage & organizing).
      - Image alt: a **different** description for each image, around the search phrase (not the same text 12 times).
    - `tools/product_payload.py products/<handle>.json` builds the `productSet` input (including handle, seo, tags) from the file.
+   - `tools/attach_payload.py <file_ids.json> <handle>=<productGID> ...` builds `fileUpdate` for the images: a square, high-quality main image, small images last, and a different alt for each image (from the product file's `alts` list).
    - `descriptionHtml`: only 2–3 short opening paragraphs (the rest lives in the metafields — don't duplicate it).
    - Bundles: one option named "כמות" ("Quantity") with values like `ערכה אחת` / `2 ערכות – חוסכים ₪49` (the text after the `–` shows up as a green savings tag).
      `compareAtPrice` for a bundle = unit price × quantity (only a real price, never an inflated one).
@@ -35,6 +36,10 @@ You don't need to touch the theme code for a new product.
 5. **Publish to the online store**: `publishablePublish` with the "חנות מקוונת" ("Online Store") publication (`publications` query). Without this the product is ACTIVE but has no page.
 6. **Add to a collection** (`add-to-collection`) — at least the relevant collection, and the homepage collection if it's a bestseller.
 7. **Check**: query the product back with `graphql_query` and confirm every field was saved. Give the user the link to the product page (`https://8bwvfe-za.myshopify.com/products/<handle>`; with an unpublished theme, add `?preview_theme_id=<id>`).
+
+## Displaying prices
+The store's currency format is `{{amount}} NIS`. The theme displays prices through `snippets/money.liquid` (`{% render 'money', cents: X %}` → ₪249).
+**Don't use** `| money` in theme code; it will show "249.00 NIS".
 
 ## Theme changes
 The MustBuy theme is live (MAIN), and writes to the live theme are blocked.

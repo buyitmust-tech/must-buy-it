@@ -11,7 +11,7 @@
 {%- if threshold > 0 -%}
   <div class="ship-progress{% if remaining <= 0 %} is-done{% endif %}">
     {%- if remaining > 0 -%}
-      עוד <strong>{{ remaining | money }}</strong> ומקבלים <strong>משלוח חינם!</strong> 🚚
+      עוד <strong>{% render 'money', cents: remaining %}</strong> ומקבלים <strong>משלוח חינם!</strong> 🚚
     {%- else -%}
       🎉 מעולה! קיבלת משלוח חינם
     {%- endif -%}

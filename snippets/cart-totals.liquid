@@ -11,10 +11,10 @@
   assign savings = compare_total | minus: cart.total_price
 -%}
 {%- for d in cart.cart_level_discount_applications -%}
-  <div class="cart-savings"><span>🏷 {{ d.title }}</span><span>-{{ d.total_allocated_amount | money }}</span></div>
+  <div class="cart-savings"><span>🏷 {{ d.title }}</span><span>-{% render 'money', cents: d.total_allocated_amount %}</span></div>
 {%- endfor -%}
 {%- if savings > 0 -%}
-  <div class="cart-savings"><span>חסכת בהזמנה הזו</span><span>{{ savings | money }}</span></div>
+  <div class="cart-savings"><span>חסכת בהזמנה הזו</span><span>{% render 'money', cents: savings %}</span></div>
 {%- endif -%}
-<div class="cart-subtotal"><span>סה״כ</span><span>{{ cart.total_price | money }}</span></div>
+<div class="cart-subtotal"><span>סה״כ</span><span>{% render 'money', cents: cart.total_price %}</span></div>
 <p class="cart-note-tax">כולל מע״מ. דמי משלוח וקודי הנחה יחושבו בקופה.</p>

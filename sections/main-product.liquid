@@ -158,8 +158,8 @@
                               {%- if label_sub != blank -%}<span class="bundle__save">{{ label_sub }}</span>{%- endif -%}
                             </span>
                             <span class="bundle__price">
-                              <strong>{{ v.price | money }}</strong>
-                              {%- if v_compare > v.price -%}<s>{{ v_compare | money }}</s>{%- endif -%}
+                              <strong>{% render 'money', cents: v.price %}</strong>
+                              {%- if v_compare > v.price -%}<s>{% render 'money', cents: v_compare %}</s>{%- endif -%}
                             </span>
                           </label>
                         {%- endfor -%}

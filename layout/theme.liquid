@@ -72,7 +72,7 @@
           cartChange: {{ routes.cart_change_url | json }},
           cartUpdate: {{ routes.cart_update_url | json }}
         },
-        moneyFormat: {{ shop.money_format | json }},
+        moneyFormat: {% raw %}"₪{{amount}}"{% endraw %},
         freeShippingThreshold: {{ settings.free_shipping_threshold | times: 100 | json }},
         cartType: {{ settings.cart_type | json }},
         strings: {

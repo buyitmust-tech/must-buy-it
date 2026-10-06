@@ -1,0 +1,7 @@
+{%- comment -%}
+  Price display in shekels: ₪249 (no trailing .00), ₪99.90 keeps the agorot.
+  Independent of the store's money format setting (which is "{{amount}} NIS").
+  Usage: {% render 'money', cents: product.price %}
+{%- endcomment -%}
+{%- assign amount = cents | money_without_currency | remove: '.00' -%}
+<span class="money" dir="ltr">₪{{ amount }}</span>
