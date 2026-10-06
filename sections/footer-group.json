@@ -5,18 +5,43 @@
     "footer": {
       "type": "footer",
       "blocks": {
-        "categories": { "type": "menu", "settings": { "heading": "קטגוריות", "menu": "footer-categories" } },
-        "info": { "type": "menu", "settings": { "heading": "מידע ומדיניות", "menu": "footer" } },
-        "service": { "type": "menu", "settings": { "heading": "שירות לקוחות", "menu": "footer-service" } }
+        "categories": {
+          "type": "menu",
+          "settings": {
+            "heading": "קטגוריות",
+            "menu": "footer-categories"
+          }
+        },
+        "info": {
+          "type": "menu",
+          "settings": {
+            "heading": "מידע ומדיניות",
+            "menu": "footer"
+          }
+        },
+        "service": {
+          "type": "menu",
+          "settings": {
+            "heading": "שירות לקוחות",
+            "menu": "footer-service"
+          }
+        }
       },
-      "block_order": ["categories", "info", "service"],
+      "block_order": [
+        "categories",
+        "info",
+        "service"
+      ],
       "settings": {
         "heading": "Must Buy It",
         "text": "<p>מוצרים חכמים לבית, למטבח, לרכב ולמשפחה, שנבחרו כדי לפתור בעיות של היומיום. משלוח עד הבית לכל הארץ.</p>",
         "hours": "א׳-ה׳ 9:00-18:00",
-        "show_payment": true
+        "show_payment": true,
+        "logo": "shopify://shop_images/mustbuy-logo-white.png"
       }
     }
   },
-  "order": ["footer"]
+  "order": [
+    "footer"
+  ]
 }

@@ -1,5 +1,8 @@
 {
-  "current": "Default",
+  "current": {
+    "favicon": "shopify://shop_images/mustbuy-icon.png",
+    "share_image": "shopify://shop_images/mustbuy-share.png"
+  },
   "presets": {
     "Default": {}
   }

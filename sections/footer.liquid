@@ -4,7 +4,13 @@
   <div class="page-width">
     <div class="footer__grid" style="--cols: {{ column_count }};">
       <div class="footer__brand">
-        <a href="{{ routes.root_url }}" class="footer__logo">{{ brand }}</a>
+        <a href="{{ routes.root_url }}" class="footer__logo">
+          {%- if section.settings.logo != blank -%}
+            {{ section.settings.logo | image_url: width: 480 | image_tag: alt: brand, loading: 'lazy', widths: '240, 360, 480', sizes: '180px' }}
+          {%- else -%}
+            {{ brand }}
+          {%- endif -%}
+        </a>
         {%- if section.settings.text != blank -%}<div class="rte footer__about">{{ section.settings.text }}</div>{%- endif -%}
         <ul class="footer__contact">
           {%- if shop.email != blank -%}
@@ -63,6 +69,7 @@
   "class": "section-footer",
   "max_blocks": 4,
   "settings": [
+    { "type": "image_picker", "id": "logo", "label": "לוגו (גרסה בהירה לרקע כהה)" },
     { "type": "text", "id": "heading", "label": "שם המותג" },
     { "type": "richtext", "id": "text", "label": "טקסט", "default": "<p>המוצרים הכי שווים, במחירים הכי טובים. משלוח מהיר לכל הארץ ושירות לקוחות אמיתי.</p>" },
     { "type": "text", "id": "hours", "label": "שעות פעילות", "default": "א׳-ה׳ 9:00-18:00" },

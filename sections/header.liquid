@@ -9,7 +9,7 @@
     {%- if request.page_type == 'index' -%}<h1 class="header__logo" style="margin:0;">{%- else -%}<div class="header__logo">{%- endif -%}
       <a href="{{ routes.root_url }}" style="--logo-h: {{ section.settings.logo_height }}px;">
         {%- if section.settings.logo != blank -%}
-          {{ section.settings.logo | image_url: width: 600 | image_tag: alt: shop.name, loading: 'eager', style: 'max-height: var(--logo-h); width: auto;' }}
+          {{ section.settings.logo | image_url: width: 600 | image_tag: alt: section.settings.logo.alt | default: shop.name, widths: '200, 300, 400, 600', sizes: '220px', loading: 'eager', style: 'max-height: var(--logo-h); width: auto;' }}
         {%- else -%}
           {{ shop.name }}
         {%- endif -%}
