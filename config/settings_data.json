@@ -1,7 +1,8 @@
 {
   "current": {
     "favicon": "shopify://shop_images/mustbuy-icon.png",
-    "share_image": "shopify://shop_images/mustbuy-share.png"
+    "share_image": "shopify://shop_images/mustbuy-share.png",
+    "free_shipping_threshold": 250
   },
   "presets": {
     "Default": {}

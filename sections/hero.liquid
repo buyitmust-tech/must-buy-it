@@ -31,7 +31,6 @@
       </div>
       {%- if s.proof_text != blank -%}
         <div class="hero__proof">
-          {% render 'stars', rating: 5 %}
           <span>{{ s.proof_text }}</span>
         </div>
       {%- endif -%}
@@ -46,7 +45,7 @@
   "settings": [
     { "type": "image_picker", "id": "image", "label": "תמונה (דסקטופ)" },
     { "type": "image_picker", "id": "image_mobile", "label": "תמונה (מובייל)", "info": "מומלץ תמונה לאורך" },
-    { "type": "text", "id": "badge", "label": "תגית מעל הכותרת", "default": "⚡ מבצע השקה — עד 50% הנחה" },
+    { "type": "text", "id": "badge", "label": "תגית מעל הכותרת" },
     { "type": "text", "id": "heading", "label": "כותרת", "default": "המוצרים שחייבים שיהיו לך" },
     { "type": "textarea", "id": "subheading", "label": "תת-כותרת", "default": "מוצרים נבחרים באיכות גבוהה, משלוח מהיר עד הבית והחזרה חינם עד 30 יום." },
     { "type": "text", "id": "button_label", "label": "כפתור ראשי", "default": "לקנייה עכשיו" },
@@ -54,7 +53,7 @@
     { "type": "checkbox", "id": "pulse", "label": "אנימציית פעימה לכפתור", "default": true },
     { "type": "text", "id": "button2_label", "label": "כפתור משני" },
     { "type": "url", "id": "button2_link", "label": "קישור כפתור משני" },
-    { "type": "text", "id": "proof_text", "label": "שורת הוכחה חברתית", "default": "4.9/5 מעל 2,000 לקוחות מרוצים" },
+    { "type": "text", "id": "proof_text", "label": "שורה מתחת לכפתור", "default": "משלוח לכל הארץ · החזרה עד 30 יום · תשלום מאובטח" },
     { "type": "select", "id": "align", "label": "יישור", "options": [ { "value": "start", "label": "ימין" }, { "value": "center", "label": "מרכז" } ], "default": "start" },
     { "type": "range", "id": "height", "label": "גובה", "min": 360, "max": 860, "step": 20, "unit": "px", "default": 600 },
     { "type": "range", "id": "overlay", "label": "הכהיית תמונה", "min": 0, "max": 90, "step": 5, "unit": "%", "default": 45 },

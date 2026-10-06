@@ -4,15 +4,15 @@
       "type": "hero",
       "settings": {
         "image": "shopify://shop_images/Text-Free_Orange_and_Cream_Living_Room.png",
-        "badge": "⚡ מבצע השקה — עד 50% הנחה",
+        "badge": "",
         "heading": "המוצרים שחייבים שיהיו לך בבית",
-        "subheading": "מוצרים נבחרים באיכות גבוהה, משלוח מהיר עד הבית והחזרה חינם עד 30 יום.",
+        "subheading": "מוצרים חכמים לבית, למטבח, לרכב ולמשפחה. משלוח עד הבית לכל הארץ והחזרה עד 30 יום.",
         "button_label": "לקנייה עכשיו",
         "button_link": "",
         "pulse": true,
         "button2_label": "",
         "button2_link": "",
-        "proof_text": "4.9/5 מעל 2,000 לקוחות מרוצים",
+        "proof_text": "משלוח לכל הארץ · החזרה עד 30 יום · תשלום מאובטח",
         "align": "start",
         "height": 600,
         "overlay": 45,
@@ -27,7 +27,7 @@
           "settings": {
             "icon": "truck",
             "title": "משלוח מהיר",
-            "text": "חינם מעל ₪199"
+            "text": "חינם מעל ₪250"
           }
         },
         "t2": {
@@ -35,7 +35,7 @@
           "settings": {
             "icon": "return",
             "title": "החזרה קלה",
-            "text": "30 יום ללא שאלות"
+            "text": "עד 30 יום, בלי דמי ביטול"
           }
         },
         "t3": {
@@ -51,7 +51,7 @@
           "settings": {
             "icon": "support",
             "title": "שירות אישי",
-            "text": "זמינים בוואטסאפ"
+            "text": "מענה במייל א׳-ה׳"
           }
         }
       },
@@ -68,8 +68,8 @@
     "bestsellers": {
       "type": "featured-collection",
       "settings": {
-        "eyebrow": "🔥 הכי נמכרים",
-        "heading": "המוצרים שכולם מדברים עליהם",
+        "eyebrow": "⭐ מומלצים",
+        "heading": "מוצרים שכדאי להכיר",
         "text": "",
         "collection": "",
         "limit": 8,
@@ -179,10 +179,10 @@
       "settings": {
         "image": "shopify://shop_images/Carefully_Wrapped_Thoughtfully_Packed.png",
         "reverse": false,
-        "eyebrow": "למה אנחנו?",
-        "heading": "איכות שמרגישים מהשימוש הראשון",
-        "text": "<p>כל מוצר אצלנו עובר בדיקת איכות קפדנית לפני שהוא מגיע אליכם. אנחנו מאמינים במוצרים שעושים את העבודה — ובשירות שבאמת אכפת לו.</p>",
-        "bullets": "איכות פרימיום במחיר הוגן\nמשלוח מהיר עד הבית\nהחזרה חינם עד 30 יום\nשירות לקוחות בוואטסאפ",
+        "eyebrow": "למה לקנות אצלנו?",
+        "heading": "מוצרים שפותרים בעיה אמיתית",
+        "text": "<p>אנחנו בוחרים מוצרים שמקלים על היומיום, ובכל דף מוצר מפרטים בדיוק מה מקבלים: למה הוא מתאים, מה מגיע בקופסה ומה המפרט.</p>",
+        "bullets": "מחיר אחד ברור, בלי מחיר מקורי מנופח\nמשלוח עד הבית לכל הארץ\nהחזרה עד 30 יום, בלי דמי ביטול\nשירות לקוחות במייל",
         "button_label": "לקנייה עכשיו",
         "button_link": "",
         "alt_bg": false
@@ -205,109 +205,6 @@
         "alt_bg": false
       }
     },
-    "compare": {
-      "type": "comparison",
-      "blocks": {
-        "r1": {
-          "type": "row",
-          "settings": {
-            "feature": "משלוח מהיר עד הבית",
-            "us": true,
-            "them": false
-          }
-        },
-        "r2": {
-          "type": "row",
-          "settings": {
-            "feature": "החזרה חינם עד 30 יום",
-            "us": true,
-            "them": false
-          }
-        },
-        "r3": {
-          "type": "row",
-          "settings": {
-            "feature": "שירות אישי בוואטסאפ",
-            "us": true,
-            "them": false
-          }
-        },
-        "r4": {
-          "type": "row",
-          "settings": {
-            "feature": "בדיקת איכות לכל מוצר",
-            "us": true,
-            "them": false
-          }
-        },
-        "r5": {
-          "type": "row",
-          "settings": {
-            "feature": "תשלום מאובטח",
-            "us": true,
-            "them": true
-          }
-        }
-      },
-      "block_order": [
-        "r1",
-        "r2",
-        "r3",
-        "r4",
-        "r5"
-      ],
-      "settings": {
-        "heading": "למה לקנות דווקא אצלנו?",
-        "text": "",
-        "us_label": "אנחנו",
-        "them_label": "אחרים",
-        "alt_bg": false
-      }
-    },
-    "reviews": {
-      "type": "testimonials",
-      "blocks": {
-        "rv1": {
-          "type": "review",
-          "settings": {
-            "rating": 5,
-            "title": "פשוט מושלם!",
-            "text": "הזמנתי ביום ראשון וזה הגיע כבר ביום שלישי. האיכות מעולה, בדיוק כמו בתמונות. בטוח אזמין שוב!",
-            "author": "מיכל כ."
-          }
-        },
-        "rv2": {
-          "type": "review",
-          "settings": {
-            "rating": 5,
-            "title": "שירות ברמה אחרת",
-            "text": "הייתה לי שאלה על המידה וענו לי בוואטסאפ תוך דקות. המוצר עצמו מעולה ושווה כל שקל.",
-            "author": "דניאל ל."
-          }
-        },
-        "rv3": {
-          "type": "review",
-          "settings": {
-            "rating": 5,
-            "title": "כבר הזמנתי עוד אחד",
-            "text": "קניתי במתנה ואהבו את זה כל כך שהזמנתי גם לעצמי. אריזה יפה ומשלוח מהיר.",
-            "author": "שירה מ."
-          }
-        }
-      },
-      "block_order": [
-        "rv1",
-        "rv2",
-        "rv3"
-      ],
-      "settings": {
-        "heading": "מה הלקוחות שלנו אומרים",
-        "summary_rating": "4.9",
-        "summary_text": "על סמך מעל 2,000 ביקורות",
-        "columns": 3,
-        "alt_bg": true
-      }
-    },
     "faq": {
       "type": "faq",
       "blocks": {
@@ -315,14 +212,14 @@
           "type": "question",
           "settings": {
             "question": "כמה זמן לוקח המשלוח?",
-            "answer": "<p>משלוחים יוצאים תוך 1-2 ימי עסקים ומגיעים בדרך כלל תוך 3-7 ימי עסקים לכל הארץ.</p>"
+            "answer": "<p>משלוחים יוצאים תוך 1-2 ימי עסקים ומגיעים בדרך כלל תוך 3-7 ימי עסקים. משלוח חינם בהזמנות מעל ₪250, ומתחת לזה ₪35.</p>"
           }
         },
         "q2": {
           "type": "question",
           "settings": {
             "question": "אפשר להחזיר מוצר?",
-            "answer": "<p>בהחלט. ניתן להחזיר כל מוצר תוך 30 יום מקבלתו, ללא שאלות.</p>"
+            "answer": "<p>כן. אפשר להחזיר מוצר תוך 30 יום מקבלתו, במצב חדש ובאריזה המקורית, בלי דמי ביטול. כל הפרטים ב<a href=\"/pages/refund-policy\">מדיניות ההחזרות</a>.</p>"
           }
         },
         "q3": {
@@ -336,7 +233,7 @@
           "type": "question",
           "settings": {
             "question": "איך יוצרים איתכם קשר?",
-            "answer": "<p>אפשר לפנות אלינו בוואטסאפ או במייל ואנחנו עונים מהר — בדרך כלל תוך שעה בשעות הפעילות.</p>"
+            "answer": "<p>בדוא״ל <a href=\"mailto:buyitmust@gmail.com\">buyitmust@gmail.com</a> או דרך <a href=\"/pages/contact\">טופס יצירת הקשר</a>. אנחנו עונים בימים א׳-ה׳ 9:00-18:00.</p>"
           }
         }
       },
@@ -348,16 +245,16 @@
       ],
       "settings": {
         "heading": "שאלות נפוצות",
-        "text": "לא מצאתם תשובה? דברו איתנו בוואטסאפ",
+        "text": "לא מצאתם תשובה? כתבו לנו ל-buyitmust@gmail.com",
         "alt_bg": false
       }
     },
     "newsletter": {
       "type": "newsletter",
       "settings": {
-        "heading": "קבלו 10% הנחה על ההזמנה הראשונה",
-        "text": "הצטרפו לרשימת התפוצה וקבלו מבצעים בלעדיים לפני כולם.",
-        "button_label": "אני רוצה הנחה",
+        "heading": "הצטרפו לעדכונים",
+        "text": "מוצרים חדשים ומבצעים, ישר למייל.",
+        "button_label": "הרשמה",
         "alt_bg": true
       }
     }
@@ -369,8 +266,6 @@
     "categories",
     "why",
     "new",
-    "compare",
-    "reviews",
     "faq",
     "newsletter"
   ]

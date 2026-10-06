@@ -1,17 +1,58 @@
 {
   "sections": {
-    "main": { "type": "main-collection", "settings": {} },
+    "main": {
+      "type": "main-collection",
+      "settings": {}
+    },
     "trust": {
       "type": "trust-bar",
       "blocks": {
-        "t1": { "type": "item", "settings": { "icon": "truck", "title": "משלוח מהיר", "text": "חינם מעל ₪199" } },
-        "t2": { "type": "item", "settings": { "icon": "return", "title": "החזרה קלה", "text": "30 יום ללא שאלות" } },
-        "t3": { "type": "item", "settings": { "icon": "lock", "title": "תשלום מאובטח", "text": "הצפנת SSL מלאה" } },
-        "t4": { "type": "item", "settings": { "icon": "support", "title": "שירות אישי", "text": "זמינים בוואטסאפ" } }
+        "t1": {
+          "type": "item",
+          "settings": {
+            "icon": "truck",
+            "title": "משלוח מהיר",
+            "text": "חינם מעל ₪250"
+          }
+        },
+        "t2": {
+          "type": "item",
+          "settings": {
+            "icon": "return",
+            "title": "החזרה קלה",
+            "text": "עד 30 יום, בלי דמי ביטול"
+          }
+        },
+        "t3": {
+          "type": "item",
+          "settings": {
+            "icon": "lock",
+            "title": "תשלום מאובטח",
+            "text": "הצפנת SSL מלאה"
+          }
+        },
+        "t4": {
+          "type": "item",
+          "settings": {
+            "icon": "support",
+            "title": "שירות אישי",
+            "text": "מענה במייל א׳-ה׳"
+          }
+        }
       },
-      "block_order": ["t1", "t2", "t3", "t4"],
-      "settings": { "alt_bg": true }
+      "block_order": [
+        "t1",
+        "t2",
+        "t3",
+        "t4"
+      ],
+      "settings": {
+        "alt_bg": true
+      }
     }
   },
-  "order": ["main", "trust"]
+  "order": [
+    "main",
+    "trust"
+  ]
 }

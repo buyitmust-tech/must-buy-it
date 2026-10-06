@@ -51,7 +51,11 @@
         },
         "guarantee": {
           "type": "guarantee",
-          "settings": {}
+          "settings": {
+            "seal": "30 יום",
+            "heading": "אפשר להחזיר תוך 30 יום",
+            "text": "לא התאים? מחזירים מוצר במצב חדש תוך 30 יום ומקבלים החזר כספי, לפי מדיניות ההחזרות."
+          }
         },
         "description": {
           "type": "description",
@@ -61,7 +65,10 @@
         },
         "shipping": {
           "type": "collapsible_tab",
-          "settings": {}
+          "settings": {
+            "heading": "משלוחים והחזרות",
+            "content": "<p>משלוח חינם בהזמנה מעל ₪250, ומתחת לזה ₪35. זמן אספקה משוער: 3-7 ימי עסקים.</p><p>החזרה עד 30 יום מקבלת המוצר, בלי דמי ביטול. <a href=\"/pages/refund-policy\">למדיניות ההחזרות</a></p>"
+          }
         },
         "payments": {
           "type": "payment_icons",
