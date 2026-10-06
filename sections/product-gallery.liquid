@@ -1,28 +1,36 @@
 {%- comment -%}
   Mosaic of the product's extra images (2nd image onward). Content-agnostic,
   so it works even when we don't know what each image shows.
-  Hidden when the product has fewer than section.settings.min_images images.
+  Skips images already shown next to benefit rows; hidden when fewer than min_images are left.
 {%- endcomment -%}
 {%- liquid
-  assign images = product.media | where: 'media_type', 'image'
-  assign count = images.size | minus: 1
-  if count > section.settings.max_images
-    assign count = section.settings.max_images
-  endif
+  assign used = ','
+  for f in product.metafields.page.features.value
+    if f.media
+      assign used = used | append: f.media | append: ','
+    endif
+  endfor
+  assign shown = 0
 -%}
-{%- if images.size > section.settings.min_images -%}
+{%- capture tiles -%}
+  {%- for media in product.media -%}
+    {%- if forloop.first or media.media_type != 'image' -%}{%- continue -%}{%- endif -%}
+    {%- assign key = ',' | append: forloop.index | append: ',' -%}
+    {%- if used contains key -%}{%- continue -%}{%- endif -%}
+    {%- if shown >= section.settings.max_images -%}{%- break -%}{%- endif -%}
+    {%- assign shown = shown | plus: 1 -%}
+    <div class="mosaic__item reveal">
+      {{ media.preview_image | image_url: width: 1000 | image_tag: loading: 'lazy', widths: '400, 700, 1000', sizes: '(min-width: 750px) 33vw, 50vw', alt: media.alt | default: product.title }}
+    </div>
+  {%- endfor -%}
+{%- endcapture -%}
+{%- if shown >= section.settings.min_images -%}
   <section class="section{% if section.settings.alt_bg %} section--alt{% endif %}">
     <div class="page-width">
       <div class="section-header">
         <h2>{{ product.metafields.page.gallery_heading.value | default: section.settings.heading }}</h2>
       </div>
-      <div class="mosaic mosaic--{{ count | at_most: 5 }}">
-        {%- for media in images offset: 1 limit: count -%}
-          <div class="mosaic__item reveal">
-            {{ media.preview_image | image_url: width: 1000 | image_tag: loading: 'lazy', widths: '400, 700, 1000', sizes: '(min-width: 750px) 33vw, 50vw', alt: media.alt | default: product.title }}
-          </div>
-        {%- endfor -%}
-      </div>
+      <div class="mosaic mosaic--{{ shown | at_most: 5 }}">{{ tiles }}</div>
     </div>
   </section>
 {%- endif -%}
@@ -32,7 +40,7 @@
   "name": "מוצר: גלריית תמונות",
   "settings": [
     { "type": "text", "id": "heading", "label": "כותרת ברירת מחדל", "default": "מכל זווית" },
-    { "type": "range", "id": "min_images", "label": "הצג רק כשיש יותר מ- תמונות", "min": 2, "max": 6, "step": 1, "default": 3 },
+    { "type": "range", "id": "min_images", "label": "הצג רק כשיש לפחות X תמונות להצגה", "min": 2, "max": 6, "step": 1, "default": 3 },
     { "type": "range", "id": "max_images", "label": "מקסימום תמונות", "min": 3, "max": 9, "step": 1, "default": 5 },
     { "type": "checkbox", "id": "alt_bg", "label": "רקע משני", "default": false }
   ]

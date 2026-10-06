@@ -559,3 +559,5 @@ body.has-sticky-atc .whatsapp-float { bottom: 84px; }
 
 /* Prices: keep "₪249" together inside RTL text */
 .money { unicode-bidi: isolate; white-space: nowrap; }
+.feature-cards--after-rows { margin-top: 3rem; }
+@media (min-width: 990px) { .feature-cards--after-rows { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); } }

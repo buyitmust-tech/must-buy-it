@@ -54,7 +54,7 @@ Shopify's Liquid doesn't allow a `}` character inside a string inside `{{ }}` (e
 | `hook` | single_line_text_field | Sentence below the title | Benefit + pain, up to ~12 words. "Lift the sofa yourself in 10 seconds" |
 | `badge` | single_line_text_field | Red tag above the title | Only if true: "🔥 רב מכר" ("Bestseller") only for a product that actually sells |
 | `benefits` | list.single_line_text_field | ✓ lines next to the button | 3–5 lines, each up to ~8 words, result-focused |
-| `features` | json | Benefit rows with images | `[{"icon":"💪","title":"…","text":"…","media":2}]` 3–6 items. `media` = the product image number (1-based) to show next to the row; leave it out if there's no matching image |
+| `features` | json | Benefit rows with images | `[{"icon":"💪","title":"…","text":"…","media":2}]` 3–6 items. `media` = the product image number (1-based) to show next to the row; leave it out if there's no matching image בפועל: שימו `media` ב-2 הפיצ׳רים הראשונים (למשל 2 ו-3) כדי שיוצגו כשורות תמונה+טקסט; השאר יוצגו ככרטיסים, והגלריה בהמשך הדף מדלגת על התמונות שכבר הוצגו |
 | `features_heading` | single_line_text_field | Benefits section heading | Optional |
 | `steps` | json | "How it works" | `[{"title":"מרימים","text":"…"}]` ("Lift") 3 steps (up to 4) |
 | `steps_heading` | single_line_text_field | Heading | Optional |

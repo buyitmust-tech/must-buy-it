@@ -5,11 +5,12 @@
 {%- endcomment -%}
 {%- assign features = product.metafields.page.features.value -%}
 {%- if features != blank and features.size > 0 -%}
-  {%- assign has_images = false -%}
+  {%- comment -%} Rows with an image first (alternating sides), then the rest as cards {%- endcomment -%}
+  {%- assign row_count = 0 -%}
   {%- for f in features -%}
     {%- if f.media -%}
       {%- assign mi = f.media | minus: 1 -%}
-      {%- if product.media[mi] -%}{%- assign has_images = true -%}{%- endif -%}
+      {%- if product.media[mi] -%}{%- assign row_count = row_count | plus: 1 -%}{%- endif -%}
     {%- endif -%}
   {%- endfor -%}
   <section class="section{% if section.settings.alt_bg %} section--alt{% endif %}">
@@ -18,18 +19,17 @@
         {%- if section.settings.eyebrow != blank -%}<span class="eyebrow">{{ section.settings.eyebrow }}</span>{%- endif -%}
         <h2>{{ product.metafields.page.features_heading.value | default: section.settings.heading }}</h2>
       </div>
-      {%- if has_images -%}
+      {%- if row_count > 0 -%}
         <div class="feature-rows">
+          {%- assign row_index = 0 -%}
           {%- for f in features -%}
-            {%- assign m = nil -%}
-            {%- if f.media -%}{%- assign mi = f.media | minus: 1 -%}{%- assign m = product.media[mi] -%}{%- endif -%}
-            <div class="iwt feature-row{% cycle '', ' iwt--reverse' %} reveal">
-              <div class="iwt__media" style="aspect-ratio: 1;">
-                {%- if m -%}
-                  {{ m.preview_image | image_url: width: 1100 | image_tag: loading: 'lazy', widths: '400, 700, 1100', sizes: '(min-width: 750px) 50vw, 100vw', alt: f.title }}
-                {%- else -%}
-                  <div class="feature-row__emoji">{{ f.icon }}</div>
-                {%- endif -%}
+            {%- unless f.media -%}{%- continue -%}{%- endunless -%}
+            {%- assign mi = f.media | minus: 1 -%}
+            {%- assign m = product.media[mi] -%}
+            {%- unless m -%}{%- continue -%}{%- endunless -%}
+            <div class="iwt feature-row{% if row_index == 1 or row_index == 3 %} iwt--reverse{% endif %} reveal">
+              <div class="iwt__media">
+                {{ m.preview_image | image_url: width: 1100 | image_tag: loading: 'lazy', widths: '400, 700, 1100', sizes: '(min-width: 750px) 50vw, 100vw', alt: m.alt | default: f.title }}
               </div>
               <div>
                 {%- if f.icon != blank -%}<span class="feature-card__icon">{{ f.icon }}</span>{%- endif -%}
@@ -37,11 +37,18 @@
                 <p class="muted">{{ f.text }}</p>
               </div>
             </div>
+            {%- assign row_index = row_index | plus: 1 -%}
           {%- endfor -%}
         </div>
-      {%- else -%}
-        <div class="feature-cards">
+      {%- endif -%}
+      {%- assign card_count = features.size | minus: row_count -%}
+      {%- if card_count > 0 -%}
+        <div class="feature-cards{% if row_count > 0 %} feature-cards--after-rows{% endif %}">
           {%- for f in features -%}
+            {%- if f.media -%}
+              {%- assign mi = f.media | minus: 1 -%}
+              {%- if product.media[mi] -%}{%- continue -%}{%- endif -%}
+            {%- endif -%}
             <div class="feature-card reveal">
               {%- if f.icon != blank -%}<span class="feature-card__icon">{{ f.icon }}</span>{%- endif -%}
               <h3>{{ f.title }}</h3>

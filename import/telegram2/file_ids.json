@@ -228,5 +228,540 @@
   "id": "gid://shopify/MediaImage/46623698420028",
   "w": 1254,
   "h": 1254
+ },
+ "photo_104_17-08-2025_03-18-01.jpg": {
+  "id": "gid://shopify/MediaImage/46618800259388",
+  "w": 549,
+  "h": 565
+ },
+ "photo_96_17-08-2025_03-18-01.jpg": {
+  "id": "gid://shopify/MediaImage/46618800292156",
+  "w": 544,
+  "h": 558
+ },
+ "photo_100_17-08-2025_03-18-01.jpg": {
+  "id": "gid://shopify/MediaImage/46618801078588",
+  "w": 960,
+  "h": 895
+ },
+ "photo_98_17-08-2025_03-18-01.jpg": {
+  "id": "gid://shopify/MediaImage/46618801635644",
+  "w": 890,
+  "h": 960
+ },
+ "photo_101_17-08-2025_03-18-01.jpg": {
+  "id": "gid://shopify/MediaImage/46618801668412",
+  "w": 854,
+  "h": 960
+ },
+ "photo_97_17-08-2025_03-18-01.jpg": {
+  "id": "gid://shopify/MediaImage/46618801701180",
+  "w": 1242,
+  "h": 1228
+ },
+ "photo_106_17-08-2025_03-18-01.jpg": {
+  "id": "gid://shopify/MediaImage/46618801930556",
+  "w": 1025,
+  "h": 1317
+ },
+ "photo_99_17-08-2025_03-18-01.jpg": {
+  "id": "gid://shopify/MediaImage/46618802061628",
+  "w": 852,
+  "h": 960
+ },
+ "photo_103_17-08-2025_03-18-01.jpg": {
+  "id": "gid://shopify/MediaImage/46618802159932",
+  "w": 1242,
+  "h": 1240
+ },
+ "photo_102_17-08-2025_03-18-01.jpg": {
+  "id": "gid://shopify/MediaImage/46618802880828",
+  "w": 1242,
+  "h": 1229
+ },
+ "photo_105_17-08-2025_03-18-01.jpg": {
+  "id": "gid://shopify/MediaImage/46618802913596",
+  "w": 1242,
+  "h": 1249
+ },
+ "photo_95_17-08-2025_03-18-01.jpg": {
+  "id": "gid://shopify/MediaImage/46618803274044",
+  "w": 914,
+  "h": 917
+ },
+ "photo_51_06-10-2026_11-50-47.jpg": {
+  "id": "gid://shopify/MediaImage/46623684919612",
+  "w": 478,
+  "h": 500
+ },
+ "photo_50_06-10-2026_11-50-47.jpg": {
+  "id": "gid://shopify/MediaImage/46623685116220",
+  "w": 500,
+  "h": 500
+ },
+ "photo_44_06-10-2026_11-50-46.jpg": {
+  "id": "gid://shopify/MediaImage/46623685148988",
+  "w": 350,
+  "h": 350
+ },
+ "photo_75_06-10-2026_11-50-47.jpg": {
+  "id": "gid://shopify/MediaImage/46623685214524",
+  "w": 900,
+  "h": 900
+ },
+ "photo_58_06-10-2026_11-50-47.jpg": {
+  "id": "gid://shopify/MediaImage/46623685280060",
+  "w": 554,
+  "h": 554
+ },
+ "photo_57_06-10-2026_11-50-47.jpg": {
+  "id": "gid://shopify/MediaImage/46623685345596",
+  "w": 640,
+  "h": 516
+ },
+ "photo_74_06-10-2026_11-50-47.jpg": {
+  "id": "gid://shopify/MediaImage/46623685574972",
+  "w": 900,
+  "h": 900
+ },
+ "photo_73_06-10-2026_11-50-47.jpg": {
+  "id": "gid://shopify/MediaImage/46623685673276",
+  "w": 900,
+  "h": 900
+ },
+ "photo_67_06-10-2026_11-50-47.jpg": {
+  "id": "gid://shopify/MediaImage/46623686066492",
+  "w": 801,
+  "h": 1280
+ },
+ "photo_71_06-10-2026_11-50-47.jpg": {
+  "id": "gid://shopify/MediaImage/46623686328636",
+  "w": 900,
+  "h": 900
+ },
+ "photo_40_06-10-2026_11-50-46.jpg": {
+  "id": "gid://shopify/MediaImage/46623686394172",
+  "w": 894,
+  "h": 894
+ },
+ "photo_45_06-10-2026_11-50-46.jpg": {
+  "id": "gid://shopify/MediaImage/46623686459708",
+  "w": 894,
+  "h": 958
+ },
+ "photo_41_06-10-2026_11-50-46.jpg": {
+  "id": "gid://shopify/MediaImage/46623686492476",
+  "w": 894,
+  "h": 894
+ },
+ "photo_42_06-10-2026_11-50-46.jpg": {
+  "id": "gid://shopify/MediaImage/46623686525244",
+  "w": 894,
+  "h": 894
+ },
+ "photo_96_06-10-2026_11-53-27.jpg": {
+  "id": "gid://shopify/MediaImage/46623686721852",
+  "w": 1024,
+  "h": 1024
+ },
+ "photo_66_06-10-2026_11-50-47.jpg": {
+  "id": "gid://shopify/MediaImage/46623686787388",
+  "w": 831,
+  "h": 1280
+ },
+ "photo_55_06-10-2026_11-50-47.jpg": {
+  "id": "gid://shopify/MediaImage/46623686951228",
+  "w": 1280,
+  "h": 1280
+ },
+ "photo_98_06-10-2026_11-53-27.jpg": {
+  "id": "gid://shopify/MediaImage/46623686983996",
+  "w": 999,
+  "h": 1000
+ },
+ "photo_100_06-10-2026_11-53-27.jpg": {
+  "id": "gid://shopify/MediaImage/46623687049532",
+  "w": 750,
+  "h": 750
+ },
+ "photo_47_06-10-2026_11-50-46.jpg": {
+  "id": "gid://shopify/MediaImage/46623687082300",
+  "w": 853,
+  "h": 1280
+ },
+ "photo_102_06-10-2026_11-53-27.jpg": {
+  "id": "gid://shopify/MediaImage/46623687115068",
+  "w": 1000,
+  "h": 1000
+ },
+ "photo_49_06-10-2026_11-50-47.jpg": {
+  "id": "gid://shopify/MediaImage/46623687147836",
+  "w": 853,
+  "h": 1280
+ },
+ "photo_43_06-10-2026_11-50-46.jpg": {
+  "id": "gid://shopify/MediaImage/46623687180604",
+  "w": 894,
+  "h": 894
+ },
+ "photo_48_06-10-2026_11-50-46.jpg": {
+  "id": "gid://shopify/MediaImage/46623687213372",
+  "w": 853,
+  "h": 1280
+ },
+ "photo_115_06-10-2026_11-53-27.jpg": {
+  "id": "gid://shopify/MediaImage/46623687344444",
+  "w": 554,
+  "h": 554
+ },
+ "photo_114_06-10-2026_11-53-27.jpg": {
+  "id": "gid://shopify/MediaImage/46623687377212",
+  "w": 554,
+  "h": 554
+ },
+ "photo_69_06-10-2026_11-50-47.jpg": {
+  "id": "gid://shopify/MediaImage/46623687442748",
+  "w": 1008,
+  "h": 1052
+ },
+ "photo_72_06-10-2026_11-50-47.jpg": {
+  "id": "gid://shopify/MediaImage/46623687475516",
+  "w": 900,
+  "h": 900
+ },
+ "photo_119_06-10-2026_11-53-27.jpg": {
+  "id": "gid://shopify/MediaImage/46623687508284",
+  "w": 894,
+  "h": 894
+ },
+ "photo_101_06-10-2026_11-53-27.jpg": {
+  "id": "gid://shopify/MediaImage/46623687606588",
+  "w": 1000,
+  "h": 1000
+ },
+ "photo_103_06-10-2026_11-53-27.jpg": {
+  "id": "gid://shopify/MediaImage/46623687639356",
+  "w": 1000,
+  "h": 1000
+ },
+ "photo_104_06-10-2026_11-53-27.jpg": {
+  "id": "gid://shopify/MediaImage/46623687737660",
+  "w": 1000,
+  "h": 1000
+ },
+ "photo_56_06-10-2026_11-50-47.jpg": {
+  "id": "gid://shopify/MediaImage/46623687803196",
+  "w": 1024,
+  "h": 1024
+ },
+ "photo_117_06-10-2026_11-53-27.jpg": {
+  "id": "gid://shopify/MediaImage/46623687934268",
+  "w": 894,
+  "h": 894
+ },
+ "photo_68_06-10-2026_11-50-47.jpg": {
+  "id": "gid://shopify/MediaImage/46623687967036",
+  "w": 1242,
+  "h": 1237
+ },
+ "photo_99_06-10-2026_11-53-27.jpg": {
+  "id": "gid://shopify/MediaImage/46623688032572",
+  "w": 1000,
+  "h": 988
+ },
+ "photo_116_06-10-2026_11-53-27.jpg": {
+  "id": "gid://shopify/MediaImage/46623688327484",
+  "w": 1000,
+  "h": 1000
+ },
+ "photo_118_06-10-2026_11-53-27.jpg": {
+  "id": "gid://shopify/MediaImage/46623688425788",
+  "w": 894,
+  "h": 894
+ },
+ "photo_52_06-10-2026_11-50-47.jpg": {
+  "id": "gid://shopify/MediaImage/46623688687932",
+  "w": 1024,
+  "h": 1024
+ },
+ "photo_60_06-10-2026_11-50-47.jpg": {
+  "id": "gid://shopify/MediaImage/46623688786236",
+  "w": 1254,
+  "h": 1254
+ },
+ "photo_97_06-10-2026_11-53-27.jpg": {
+  "id": "gid://shopify/MediaImage/46623688819004",
+  "w": 1242,
+  "h": 1279
+ },
+ "photo_54_06-10-2026_11-50-47.jpg": {
+  "id": "gid://shopify/MediaImage/46623689113916",
+  "w": 1024,
+  "h": 1024
+ },
+ "photo_53_06-10-2026_11-50-47.jpg": {
+  "id": "gid://shopify/MediaImage/46623689179452",
+  "w": 1024,
+  "h": 1024
+ },
+ "photo_62_06-10-2026_11-50-47.jpg": {
+  "id": "gid://shopify/MediaImage/46623689277756",
+  "w": 1024,
+  "h": 1024
+ },
+ "photo_59_06-10-2026_11-50-47.jpg": {
+  "id": "gid://shopify/MediaImage/46623689310524",
+  "w": 1254,
+  "h": 1254
+ },
+ "photo_112_06-10-2026_11-53-27.jpg": {
+  "id": "gid://shopify/MediaImage/46623689441596",
+  "w": 1242,
+  "h": 981
+ },
+ "photo_113_06-10-2026_11-53-27.jpg": {
+  "id": "gid://shopify/MediaImage/46623689474364",
+  "w": 1199,
+  "h": 1280
+ },
+ "photo_70_06-10-2026_11-50-47.jpg": {
+  "id": "gid://shopify/MediaImage/46623689638204",
+  "w": 1280,
+  "h": 1280
+ },
+ "photo_65_06-10-2026_11-50-47.jpg": {
+  "id": "gid://shopify/MediaImage/46623689867580",
+  "w": 1254,
+  "h": 1254
+ },
+ "photo_64_06-10-2026_11-50-47.jpg": {
+  "id": "gid://shopify/MediaImage/46623689900348",
+  "w": 1254,
+  "h": 1254
+ },
+ "photo_160_06-10-2026_11-56-16.jpg": {
+  "id": "gid://shopify/MediaImage/46623689376060",
+  "w": 714,
+  "h": 1280
+ },
+ "photo_158_06-10-2026_11-56-16.jpg": {
+  "id": "gid://shopify/MediaImage/46623689736508",
+  "w": 714,
+  "h": 1280
+ },
+ "photo_157_06-10-2026_11-56-16.jpg": {
+  "id": "gid://shopify/MediaImage/46623689802044",
+  "w": 761,
+  "h": 1280
+ },
+ "photo_159_06-10-2026_11-56-16.jpg": {
+  "id": "gid://shopify/MediaImage/46623690031420",
+  "w": 714,
+  "h": 1280
+ },
+ "photo_161_06-10-2026_11-56-16.jpg": {
+  "id": "gid://shopify/MediaImage/46623690129724",
+  "w": 714,
+  "h": 1280
+ },
+ "photo_162_06-10-2026_11-56-16.jpg": {
+  "id": "gid://shopify/MediaImage/46623690162492",
+  "w": 714,
+  "h": 1280
+ },
+ "photo_304_06-10-2026_12-01-47.jpg": {
+  "id": "gid://shopify/MediaImage/46623693472060",
+  "w": 480,
+  "h": 655
+ },
+ "photo_305_06-10-2026_12-01-47.jpg": {
+  "id": "gid://shopify/MediaImage/46623693799740",
+  "w": 480,
+  "h": 654
+ },
+ "photo_306_06-10-2026_12-01-47.jpg": {
+  "id": "gid://shopify/MediaImage/46623693832508",
+  "w": 604,
+  "h": 508
+ },
+ "photo_310_06-10-2026_12-01-47.jpg": {
+  "id": "gid://shopify/MediaImage/46623693930812",
+  "w": 585,
+  "h": 524
+ },
+ "photo_309_06-10-2026_12-01-47.jpg": {
+  "id": "gid://shopify/MediaImage/46623693963580",
+  "w": 554,
+  "h": 554
+ },
+ "photo_307_06-10-2026_12-01-47.jpg": {
+  "id": "gid://shopify/MediaImage/46623693996348",
+  "w": 480,
+  "h": 655
+ },
+ "photo_308_06-10-2026_12-01-47.jpg": {
+  "id": "gid://shopify/MediaImage/46623694061884",
+  "w": 480,
+  "h": 655
+ },
+ "photo_314_06-10-2026_12-01-47.jpg": {
+  "id": "gid://shopify/MediaImage/46623694192956",
+  "w": 894,
+  "h": 860
+ },
+ "photo_316_06-10-2026_12-01-47.jpg": {
+  "id": "gid://shopify/MediaImage/46623695077692",
+  "w": 894,
+  "h": 894
+ },
+ "photo_319_06-10-2026_12-01-47.jpg": {
+  "id": "gid://shopify/MediaImage/46623695405372",
+  "w": 1000,
+  "h": 1000
+ },
+ "photo_312_06-10-2026_12-01-47.jpg": {
+  "id": "gid://shopify/MediaImage/46623695438140",
+  "w": 894,
+  "h": 894
+ },
+ "photo_313_06-10-2026_12-01-47.jpg": {
+  "id": "gid://shopify/MediaImage/46623695503676",
+  "w": 749,
+  "h": 999
+ },
+ "photo_318_06-10-2026_12-01-47.jpg": {
+  "id": "gid://shopify/MediaImage/46623695864124",
+  "w": 894,
+  "h": 894
+ },
+ "photo_311_06-10-2026_12-01-47.jpg": {
+  "id": "gid://shopify/MediaImage/46623696027964",
+  "w": 1209,
+  "h": 1280
+ },
+ "photo_315_06-10-2026_12-01-47.jpg": {
+  "id": "gid://shopify/MediaImage/46623696257340",
+  "w": 894,
+  "h": 894
+ },
+ "photo_303_06-10-2026_12-01-47.jpg": {
+  "id": "gid://shopify/MediaImage/46623696355644",
+  "w": 1122,
+  "h": 944
+ },
+ "photo_317_06-10-2026_12-01-47.jpg": {
+  "id": "gid://shopify/MediaImage/46623697535292",
+  "w": 894,
+  "h": 894
+ },
+ "photo_522_06-10-2026_12-27-13.jpg": {
+  "id": "gid://shopify/MediaImage/46623701205308",
+  "w": 894,
+  "h": 894
+ },
+ "photo_521_06-10-2026_12-27-13.jpg": {
+  "id": "gid://shopify/MediaImage/46623701238076",
+  "w": 579,
+  "h": 478
+ },
+ "photo_527_06-10-2026_12-27-13.jpg": {
+  "id": "gid://shopify/MediaImage/46623701565756",
+  "w": 894,
+  "h": 822
+ },
+ "photo_523_06-10-2026_12-27-13.jpg": {
+  "id": "gid://shopify/MediaImage/46623702450492",
+  "w": 894,
+  "h": 796
+ },
+ "photo_524_06-10-2026_12-27-13.jpg": {
+  "id": "gid://shopify/MediaImage/46623702516028",
+  "w": 894,
+  "h": 894
+ },
+ "photo_525_06-10-2026_12-27-13.jpg": {
+  "id": "gid://shopify/MediaImage/46623702614332",
+  "w": 894,
+  "h": 946
+ },
+ "photo_526_06-10-2026_12-27-13.jpg": {
+  "id": "gid://shopify/MediaImage/46623702810940",
+  "w": 894,
+  "h": 863
+ },
+ "photo_568_06-10-2026_12-27-14.jpg": {
+  "id": "gid://shopify/MediaImage/46623702974780",
+  "w": 500,
+  "h": 479
+ },
+ "photo_570_06-10-2026_12-27-15.jpg": {
+  "id": "gid://shopify/MediaImage/46623703073084",
+  "w": 1000,
+  "h": 1000
+ },
+ "photo_528_06-10-2026_12-27-13.jpg": {
+  "id": "gid://shopify/MediaImage/46623703499068",
+  "w": 894,
+  "h": 890
+ },
+ "photo_571_06-10-2026_12-27-15.jpg": {
+  "id": "gid://shopify/MediaImage/46623704383804",
+  "w": 749,
+  "h": 999
+ },
+ "photo_569_06-10-2026_12-27-15.jpg": {
+  "id": "gid://shopify/MediaImage/46623704416572",
+  "w": 1000,
+  "h": 1000
+ },
+ "photo_567_06-10-2026_12-27-14.jpg": {
+  "id": "gid://shopify/MediaImage/46623704645948",
+  "w": 699,
+  "h": 699
+ },
+ "photo_566_06-10-2026_12-27-14.jpg": {
+  "id": "gid://shopify/MediaImage/46623705334076",
+  "w": 1280,
+  "h": 1280
+ },
+ "photo_565_06-10-2026_12-27-14.jpg": {
+  "id": "gid://shopify/MediaImage/46623705432380",
+  "w": 1280,
+  "h": 1178
+ },
+ "photo_717_06-10-2026_12-34-14.jpg": {
+  "id": "gid://shopify/MediaImage/46623706218812",
+  "w": 662,
+  "h": 701
+ },
+ "photo_713_06-10-2026_12-34-14.jpg": {
+  "id": "gid://shopify/MediaImage/46623706972476",
+  "w": 1280,
+  "h": 1222
+ },
+ "photo_715_06-10-2026_12-34-14.jpg": {
+  "id": "gid://shopify/MediaImage/46623708774716",
+  "w": 894,
+  "h": 894
+ },
+ "photo_711_06-10-2026_12-34-14.jpg": {
+  "id": "gid://shopify/MediaImage/46623708905788",
+  "w": 964,
+  "h": 1280
+ },
+ "photo_716_06-10-2026_12-34-14.jpg": {
+  "id": "gid://shopify/MediaImage/46623709102396",
+  "w": 1265,
+  "h": 1280
+ },
+ "photo_714_06-10-2026_12-34-14.jpg": {
+  "id": "gid://shopify/MediaImage/46623709266236",
+  "w": 1265,
+  "h": 1280
+ },
+ "photo_712_06-10-2026_12-34-14.jpg": {
+  "id": "gid://shopify/MediaImage/46623709331772",
+  "w": 1249,
+  "h": 1280
  }
 }
