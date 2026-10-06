@@ -1,6 +1,24 @@
 {
   "sections": {
-    "hero": { "type": "hero", "settings": {} },
+    "hero": {
+      "type": "hero",
+      "settings": {
+        "image": "shopify://shop_images/Text-Free_Orange_and_Cream_Living_Room.png",
+        "badge": "⚡ מבצע השקה — עד 50% הנחה",
+        "heading": "המוצרים שחייבים שיהיו לך בבית",
+        "subheading": "מוצרים נבחרים באיכות גבוהה, משלוח מהיר עד הבית והחזרה חינם עד 30 יום.",
+        "button_label": "לקנייה עכשיו",
+        "button_link": "",
+        "pulse": true,
+        "button2_label": "",
+        "button2_link": "",
+        "proof_text": "4.9/5 מעל 2,000 לקוחות מרוצים",
+        "align": "start",
+        "height": 600,
+        "overlay": 45,
+        "text_color": "#ffffff"
+      }
+    },
     "trust": {
       "type": "trust-bar",
       "blocks": {
@@ -14,24 +32,86 @@
     },
     "bestsellers": {
       "type": "featured-collection",
-      "settings": { "eyebrow": "🔥 הכי נמכרים", "heading": "המוצרים שכולם מדברים עליהם", "limit": 8, "columns": 4 }
+      "settings": {
+        "eyebrow": "🔥 הכי נמכרים",
+        "heading": "המוצרים שכולם מדברים עליהם",
+        "text": "",
+        "collection": "",
+        "limit": 8,
+        "columns": 4,
+        "columns_mobile": "2",
+        "ratio": "1",
+        "show_vendor": false,
+        "show_view_all": true,
+        "view_all_label": "לכל המוצרים",
+        "alt_bg": false
+      }
     },
     "categories": {
       "type": "collection-list",
       "blocks": {
-        "c1": { "type": "collection" },
-        "c2": { "type": "collection" },
-        "c3": { "type": "collection" },
-        "c4": { "type": "collection" }
+        "c1": { "type": "collection", "settings": { "collection": "kitchen", "title": "" } },
+        "c2": { "type": "collection", "settings": { "collection": "cleaning", "title": "" } },
+        "c3": { "type": "collection", "settings": { "collection": "storage-organization", "title": "" } },
+        "c4": { "type": "collection", "settings": { "collection": "home", "title": "" } },
+        "c5": { "type": "collection", "settings": { "collection": "beauty-care", "title": "" } },
+        "c6": { "type": "collection", "settings": { "collection": "kids-baby", "title": "" } },
+        "c7": { "type": "collection", "settings": { "collection": "sport-fitness", "title": "" } },
+        "c8": { "type": "collection", "settings": { "collection": "car", "title": "" } },
+        "c9": { "type": "collection", "settings": { "collection": "gadgets", "title": "" } },
+        "c10": { "type": "collection", "settings": { "collection": "travel-bags", "title": "" } }
       },
-      "block_order": ["c1", "c2", "c3", "c4"],
-      "settings": { "heading": "קנו לפי קטגוריה", "alt_bg": true }
+      "block_order": ["c1", "c2", "c3", "c4", "c5", "c6", "c7", "c8", "c9", "c10"],
+      "settings": {
+        "heading": "קנו לפי קטגוריה",
+        "columns": 5,
+        "ratio": "1",
+        "alt_bg": true
+      }
     },
-    "why": { "type": "image-with-text", "settings": {} },
-    "deal": { "type": "countdown-banner", "settings": {} },
+    "why": {
+      "type": "image-with-text",
+      "settings": {
+        "reverse": false,
+        "eyebrow": "למה אנחנו?",
+        "heading": "איכות שמרגישים מהשימוש הראשון",
+        "text": "<p>כל מוצר אצלנו עובר בדיקת איכות קפדנית לפני שהוא מגיע אליכם. אנחנו מאמינים במוצרים שעושים את העבודה — ובשירות שבאמת אכפת לו.</p>",
+        "bullets": "איכות פרימיום במחיר הוגן\nמשלוח מהיר עד הבית\nהחזרה חינם עד 30 יום\nשירות לקוחות בוואטסאפ",
+        "button_label": "לקנייה עכשיו",
+        "button_link": "",
+        "alt_bg": false
+      }
+    },
+    "deal": {
+      "type": "countdown-banner",
+      "settings": {
+        "heading": "🔥 המבצע נגמר בקרוב!",
+        "text": "עד 50% הנחה על המוצרים הנבחרים — רק היום",
+        "mode": "evergreen",
+        "end_date": "",
+        "hide_on_end": true,
+        "button_label": "לניצול ההנחה",
+        "button_link": "",
+        "bg": "#111827",
+        "fg": "#ffffff"
+      }
+    },
     "new": {
       "type": "featured-collection",
-      "settings": { "eyebrow": "✨ חדש באתר", "heading": "הגיעו עכשיו", "limit": 4, "columns": 4, "alt_bg": false }
+      "settings": {
+        "eyebrow": "✨ חדש באתר",
+        "heading": "הגיעו עכשיו",
+        "text": "",
+        "collection": "",
+        "limit": 4,
+        "columns": 4,
+        "columns_mobile": "2",
+        "ratio": "1",
+        "show_vendor": false,
+        "show_view_all": true,
+        "view_all_label": "לכל המוצרים",
+        "alt_bg": false
+      }
     },
     "compare": {
       "type": "comparison",
@@ -43,30 +123,54 @@
         "r5": { "type": "row", "settings": { "feature": "תשלום מאובטח", "us": true, "them": true } }
       },
       "block_order": ["r1", "r2", "r3", "r4", "r5"],
-      "settings": {}
+      "settings": {
+        "heading": "למה לקנות דווקא אצלנו?",
+        "text": "",
+        "us_label": "אנחנו",
+        "them_label": "אחרים",
+        "alt_bg": false
+      }
     },
     "reviews": {
       "type": "testimonials",
       "blocks": {
-        "rv1": { "type": "review", "settings": {} },
-        "rv2": { "type": "review", "settings": { "title": "שירות ברמה אחרת", "text": "הייתה לי שאלה על המידה וענו לי בוואטסאפ תוך דקות. המוצר עצמו מעולה ושווה כל שקל.", "author": "דניאל ל." } },
-        "rv3": { "type": "review", "settings": { "title": "כבר הזמנתי עוד אחד", "text": "קניתי במתנה ואהבו את זה כל כך שהזמנתי גם לעצמי. אריזה יפה ומשלוח מהיר.", "author": "שירה מ." } }
+        "rv1": { "type": "review", "settings": { "rating": 5, "title": "פשוט מושלם!", "text": "הזמנתי ביום ראשון וזה הגיע כבר ביום שלישי. האיכות מעולה, בדיוק כמו בתמונות. בטוח אזמין שוב!", "author": "מיכל כ." } },
+        "rv2": { "type": "review", "settings": { "rating": 5, "title": "שירות ברמה אחרת", "text": "הייתה לי שאלה על המידה וענו לי בוואטסאפ תוך דקות. המוצר עצמו מעולה ושווה כל שקל.", "author": "דניאל ל." } },
+        "rv3": { "type": "review", "settings": { "rating": 5, "title": "כבר הזמנתי עוד אחד", "text": "קניתי במתנה ואהבו את זה כל כך שהזמנתי גם לעצמי. אריזה יפה ומשלוח מהיר.", "author": "שירה מ." } }
       },
       "block_order": ["rv1", "rv2", "rv3"],
-      "settings": {}
+      "settings": {
+        "heading": "מה הלקוחות שלנו אומרים",
+        "summary_rating": "4.9",
+        "summary_text": "על סמך מעל 2,000 ביקורות",
+        "columns": 3,
+        "alt_bg": true
+      }
     },
     "faq": {
       "type": "faq",
       "blocks": {
-        "q1": { "type": "question", "settings": {} },
+        "q1": { "type": "question", "settings": { "question": "כמה זמן לוקח המשלוח?", "answer": "<p>משלוחים יוצאים תוך 1-2 ימי עסקים ומגיעים בדרך כלל תוך 3-7 ימי עסקים לכל הארץ.</p>" } },
         "q2": { "type": "question", "settings": { "question": "אפשר להחזיר מוצר?", "answer": "<p>בהחלט. ניתן להחזיר כל מוצר תוך 30 יום מקבלתו, ללא שאלות.</p>" } },
         "q3": { "type": "question", "settings": { "question": "האם התשלום באתר מאובטח?", "answer": "<p>כן. כל התשלומים עוברים דרך מערכת סליקה מאובטחת עם הצפנת SSL מלאה. איננו שומרים פרטי אשראי.</p>" } },
         "q4": { "type": "question", "settings": { "question": "איך יוצרים איתכם קשר?", "answer": "<p>אפשר לפנות אלינו בוואטסאפ או במייל ואנחנו עונים מהר — בדרך כלל תוך שעה בשעות הפעילות.</p>" } }
       },
       "block_order": ["q1", "q2", "q3", "q4"],
-      "settings": {}
+      "settings": {
+        "heading": "שאלות נפוצות",
+        "text": "לא מצאתם תשובה? דברו איתנו בוואטסאפ",
+        "alt_bg": false
+      }
     },
-    "newsletter": { "type": "newsletter", "settings": {} }
+    "newsletter": {
+      "type": "newsletter",
+      "settings": {
+        "heading": "קבלו 10% הנחה על ההזמנה הראשונה",
+        "text": "הצטרפו לרשימת התפוצה וקבלו מבצעים בלעדיים לפני כולם.",
+        "button_label": "אני רוצה הנחה",
+        "alt_bg": true
+      }
+    }
   },
   "order": ["hero", "trust", "bestsellers", "categories", "why", "deal", "new", "compare", "reviews", "faq", "newsletter"]
 }
